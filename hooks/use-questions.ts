@@ -1,3 +1,6 @@
+import { RadioCardImageProps } from '../components/radio-group/radio-card-image';
+import { RadioCardTextProps } from '../components/radio-group/radio-card-text';
+
 import Q2_ANY from '../public/question-2/any.svg';
 import Q2_ANY_CHECKED from '../public/question-2/any-checked.svg';
 import Q2_BACK from '../public/question-2/back.svg';
@@ -36,17 +39,19 @@ import Q6_SPRING from '../public/question-6/spring.svg';
 
 export const useQuestion1 = () => ({
     name: 'question1',
+    question: 'Tại sao bạn lại cần nệm mới?',
     options: [
         { label: 'Đổi đệm hoặc nâng cấp nệm', value: '1' },
         { label: 'Đệm cũ ngủ không ngon giấc', value: '2' },
         { label: 'Mua nệm mới, giường mới', value: '3' },
         { label: 'Mua tặng cho bố mẹ & người thân', value: '4' },
         { label: 'Cho con ngủ riêng', value: '5' },
-    ],
+    ] as RadioCardTextProps[],
 });
 
 export const useQuestion2 = () => ({
     name: 'question2',
+    question: 'Tư thế quen thuộc của bạn (hoặc người sử dụng)',
     options: [
         {
             label: 'Nằm nghiêng',
@@ -77,6 +82,7 @@ export const useQuestion2 = () => ({
 
 export const useQuestion3 = () => ({
     name: 'question3',
+    question: 'Bạn hoặc người sử dụng có gặp vấn đề nào sau đây không?',
     options: [
         { label: 'Đau lưng', value: '1' },
         { label: 'Đau cổ, vai và gáy', value: '2' },
@@ -88,6 +94,7 @@ export const useQuestion3 = () => ({
 
 export const useQuestion4 = () => ({
     name: 'question4',
+    question: 'Có khoảng bao nhiêu người cùng nằm trên nệm?',
     options: [
         {
             label: '1 người',
@@ -112,6 +119,7 @@ export const useQuestion4 = () => ({
 
 export const useQuestion5 = () => ({
     name: 'question5',
+    question: 'Bạn muốn chiếc nệm của mình thoải mái đến đâu?',
     options: [
         {
             label: 'Mềm mại',
@@ -142,6 +150,7 @@ export const useQuestion5 = () => ({
 
 export const useQuestion6 = () => ({
     name: 'question6',
+    question: 'Bạn đặc biệt yêu thích chất liệu nệm nào?',
     options: [
         {
             label: 'Nệm lò xo',
@@ -167,11 +176,11 @@ export const useQuestion6 = () => ({
             checkedSVG: Q6_COMPRESS_CHECKED,
             SVG: Q6_COMPRESS,
         },
-        {
-            label: 'Tôi không rõ',
-            value: '0',
-            checkedSVG: Q6_ANY_CHECKED,
-            SVG: Q6_ANY,
-        },
+        // {
+        //     label: 'Tôi không rõ',
+        //     value: '0',
+        //     checkedSVG: Q6_ANY_CHECKED,
+        //     SVG: Q6_ANY,
+        // },
     ],
 });

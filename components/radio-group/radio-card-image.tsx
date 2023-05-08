@@ -1,7 +1,7 @@
 import NextImage from 'next/image';
-import { Box, useRadio } from '@chakra-ui/react';
+import { Box, Flex, useRadio, chakra } from '@chakra-ui/react';
 
-type RadioCardImageProps = {
+export type RadioCardImageProps = {
     label: string;
     value: string;
     SVG: any;
@@ -9,14 +9,17 @@ type RadioCardImageProps = {
 };
 
 export const RadioCardImage = (props: RadioCardImageProps) => {
-    const { state, getInputProps, getRadioProps } = useRadio(props);
+    const { state, getInputProps, getRadioProps, getLabelProps } = useRadio(props);
 
     return (
-        <Box as="label">
+        <Flex as="label" flexDirection="column" alignItems="center">
             <input {...getInputProps()} />
             <Box {...getRadioProps()} display="relative" cursor="pointer">
                 <NextImage src={state.isChecked ? props.checkedSVG : props.SVG} alt={props.label} />
             </Box>
-        </Box>
+            <chakra.span {...getLabelProps()} mt="10px" textAlign="center">
+                {props.label}
+            </chakra.span>
+        </Flex>
     );
 };

@@ -1,6 +1,6 @@
 import { Box, useRadio } from '@chakra-ui/react';
 
-type RadioCardTextProps = {
+export type RadioCardTextProps = {
     label: string;
     value: string;
 };
@@ -29,7 +29,6 @@ export const RadioCardText = (props: RadioCardTextProps) => {
                     borderColor: '#2D2E7F',
                     fontWeight: 'bold',
                 }}
-                // {...checkedStyle}
             >
                 <span>{props.label}</span>
             </Box>

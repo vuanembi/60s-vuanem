@@ -1,15 +1,19 @@
+import { PropsWithChildren } from 'react';
 import NextImage from 'next/image';
-import { Box, Center, Divider, Flex } from '@chakra-ui/react';
+import { Box, Divider, Flex } from '@chakra-ui/react';
 
 import logoHeader from '../../public/logo-header.svg';
 
-export const Header = () => {
+export const Header = ({ children }: PropsWithChildren) => {
     return (
-        <Center as={Flex} mt="50px" flexDirection="column">
-            <Box display="relative" width="80px">
-                <NextImage src={logoHeader} alt="Logo" />
-            </Box>
-            <Divider mt="16px"/>
-        </Center>
+        <Flex mt="40px" mb="22px" flexDirection="column" alignItems="stretch">
+            <Flex flexDirection="column" alignItems="center">
+                <Box display="relative" width="80px">
+                    <NextImage src={logoHeader} alt="Logo" />
+                </Box>
+                <Divider mt="16px" />
+            </Flex>
+            {children}
+        </Flex>
     );
 };
