@@ -1,5 +1,5 @@
-import { RadioCardImageProps } from '../components/radio-group/radio-card-image';
-import { RadioCardTextProps } from '../components/radio-group/radio-card-text';
+import { GetProductsFormValues } from './use-wizard-form';
+import { RadioItemProps } from '../components/radio-group/radio-group';
 
 import Q2_ANY from '../public/question-2/any.svg';
 import Q2_ANY_CHECKED from '../public/question-2/any-checked.svg';
@@ -26,8 +26,6 @@ import Q5_NORMAL_CHECKED from '../public/question-5/normal-checked.svg';
 import Q5_SOFT_CHECKED from '../public/question-5/soft-checked.svg';
 import Q5_SOFT from '../public/question-5/soft.svg';
 
-import Q6_ANY from '../public/question-6/any.svg';
-import Q6_ANY_CHECKED from '../public/question-6/any-checked.svg';
 import Q6_COMPRESS from '../public/question-6/compress.svg';
 import Q6_COMPRESS_CHECKED from '../public/question-6/compress-checked.svg';
 import Q6_FOAM from '../public/question-6/foam.svg';
@@ -37,7 +35,13 @@ import Q6_LATEX_CHECKED from '../public/question-6/latex-checked.svg';
 import Q6_SPRING_CHECKED from '../public/question-6/spring-checked.svg';
 import Q6_SPRING from '../public/question-6/spring.svg';
 
-export const useQuestion1 = () => ({
+export type UseQuestion = () => {
+    name: keyof GetProductsFormValues;
+    question: string;
+    options: any[];
+};
+
+export const useQuestion1: UseQuestion = () => ({
     name: 'question1',
     question: 'Tại sao bạn lại cần nệm mới?',
     options: [
@@ -46,10 +50,10 @@ export const useQuestion1 = () => ({
         { label: 'Mua nệm mới, giường mới', value: '3' },
         { label: 'Mua tặng cho bố mẹ & người thân', value: '4' },
         { label: 'Cho con ngủ riêng', value: '5' },
-    ] as RadioCardTextProps[],
+    ],
 });
 
-export const useQuestion2 = () => ({
+export const useQuestion2: UseQuestion = () => ({
     name: 'question2',
     question: 'Tư thế quen thuộc của bạn (hoặc người sử dụng)',
     options: [
@@ -80,7 +84,7 @@ export const useQuestion2 = () => ({
     ],
 });
 
-export const useQuestion3 = () => ({
+export const useQuestion3: UseQuestion = () => ({
     name: 'question3',
     question: 'Bạn hoặc người sử dụng có gặp vấn đề nào sau đây không?',
     options: [
@@ -92,7 +96,7 @@ export const useQuestion3 = () => ({
     ],
 });
 
-export const useQuestion4 = () => ({
+export const useQuestion4: UseQuestion = () => ({
     name: 'question4',
     question: 'Có khoảng bao nhiêu người cùng nằm trên nệm?',
     options: [
@@ -117,7 +121,7 @@ export const useQuestion4 = () => ({
     ],
 });
 
-export const useQuestion5 = () => ({
+export const useQuestion5: UseQuestion = () => ({
     name: 'question5',
     question: 'Bạn muốn chiếc nệm của mình thoải mái đến đâu?',
     options: [
@@ -148,7 +152,7 @@ export const useQuestion5 = () => ({
     ],
 });
 
-export const useQuestion6 = () => ({
+export const useQuestion6: UseQuestion = () => ({
     name: 'question6',
     question: 'Bạn đặc biệt yêu thích chất liệu nệm nào?',
     options: [
@@ -176,11 +180,5 @@ export const useQuestion6 = () => ({
             checkedSVG: Q6_COMPRESS_CHECKED,
             SVG: Q6_COMPRESS,
         },
-        // {
-        //     label: 'Tôi không rõ',
-        //     value: '0',
-        //     checkedSVG: Q6_ANY_CHECKED,
-        //     SVG: Q6_ANY,
-        // },
     ],
 });

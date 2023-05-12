@@ -3,22 +3,24 @@ import { Box, Button, Flex, Heading, HStack, SimpleGrid, useRadioGroup } from '@
 import { useController, Control } from 'react-hook-form';
 import { useWizard } from 'react-use-wizard';
 
-type RadioItem = {
+import { GetProductsFormValues } from '../../hooks/use-wizard-form';
+
+export type RadioItemProps = {
     label: string;
     value: string;
     [key: string]: any;
 };
 
-type RadioGroupProps<T extends RadioItem> = {
-    name: string;
+type RadioGroupProps<T extends RadioItemProps> = {
+    name: keyof GetProductsFormValues;
     question: string;
     options: T[];
-    control: Control;
+    control: Control<GetProductsFormValues>;
     columns: number;
     Item: FC<T>;
 };
 
-export const RadioGroup = <T extends RadioItem>(props: RadioGroupProps<T>) => {
+export const RadioGroup = <T extends RadioItemProps>(props: RadioGroupProps<T>) => {
     const { name, question, options, columns, control, Item } = props;
 
     const { field } = useController({ control, name });

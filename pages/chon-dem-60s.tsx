@@ -1,9 +1,7 @@
-import Image from 'next/image';
-import { Box, Button, Center, Container, Flex, Heading, HStack, VStack } from '@chakra-ui/react';
+import { Container } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
-import { Wizard, useWizard } from 'react-use-wizard';
+import { Wizard } from 'react-use-wizard';
 
-import { Header } from '../components/header/header';
 import {
     useQuestion1,
     useQuestion2,
@@ -13,12 +11,14 @@ import {
     useQuestion6,
 } from '../hooks/use-questions';
 import { RadioGroup } from '../components/radio-group/radio-group';
-import { RadioCardText, RadioCardTextProps } from '../components/radio-group/radio-card-text';
-import { RadioCardImage, RadioCardImageProps } from '../components/radio-group/radio-card-image';
+import { RadioCardText } from '../components/radio-group/radio-card-text';
+import { RadioCardImage } from '../components/radio-group/radio-card-image';
 import { WizardHeader } from '../components/wizard/header';
+import { WizardResult } from '../components/wizard/result';
+import { GetProductsFormValues } from '../hooks/use-wizard-form';
 
 const ChonDem60s = () => {
-    const { control, handleSubmit, reset } = useForm();
+    const { control, handleSubmit, reset, watch } = useForm<GetProductsFormValues>();
 
     return (
         <>
@@ -61,6 +61,7 @@ const ChonDem60s = () => {
                             columns={2}
                             Item={RadioCardImage}
                         />
+                        <WizardResult values={watch()} />
                     </Wizard>
                 </form>
             </Container>
