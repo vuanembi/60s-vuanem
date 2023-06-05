@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Box, Button, Flex, Heading, HStack, SimpleGrid, useRadioGroup } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, SimpleGrid, useRadioGroup } from '@chakra-ui/react';
 import { useController, Control } from 'react-hook-form';
 import { useWizard } from 'react-use-wizard';
 

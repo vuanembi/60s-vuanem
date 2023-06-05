@@ -9,7 +9,7 @@ export const Layout = ({ children }: PropsWithChildren) => {
             as={Flex}
             flexDirection="column"
             alignItems="stretch"
-            maxW="container.lg"
+            maxW="container.md"
             px="32px"
             pt="16px"
             minH="100vh"

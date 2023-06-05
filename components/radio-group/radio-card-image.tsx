@@ -13,8 +13,8 @@ export const RadioCardImage = (props: RadioCardImageProps) => {
     return (
         <Flex as="label" flexDirection="column" alignItems="center">
             <input {...getInputProps()} />
-            <Box {...getRadioProps()} position="relative" cursor="pointer">
-                <NextImage src={props.src(state.isChecked)} alt={props.label} />
+            <Box {...getRadioProps()} w="full" maxW="200px" position="relative" cursor="pointer">
+                <NextImage src={props.src(state.isChecked)} alt={props.label} layout="responsive" />
             </Box>
             <chakra.span
                 {...getLabelProps()}

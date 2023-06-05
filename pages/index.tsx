@@ -8,21 +8,21 @@ const Home = () => {
     return (
         <Flex position="relative" minH="600px" flexDirection="column" alignItems="center">
             <Box
-                mt="32px"
                 position="relative"
+                mt="32px"
                 minW="320px"
                 minH="320px"
                 borderRadius="6px"
                 overflow="hidden"
                 boxShadow="inner"
             >
-                <Image src={HERO_IMAGE} alt="Hero" />
+                <Image src={HERO_IMAGE} alt="Hero" fill />
             </Box>
             <Flex mt="32px" flexDirection="column" alignItems="center" textColor="indigo.600">
-                <Heading as="h1">
+                <Heading as="h1" fontSize="32px" fontWeight="medium" lineHeight={1.5}>
                     Chọn nệm trong
                 </Heading>
-                <Heading as="h1" fontWeight="bold">
+                <Heading as="h1" fontSize="36px" fontWeight="bold">
                     60s
                 </Heading>
             </Flex>
