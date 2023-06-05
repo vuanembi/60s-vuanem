@@ -18,7 +18,7 @@ const Home = () => {
             >
                 <Image src={HERO_IMAGE} alt="Hero" fill />
             </Box>
-            <Flex mt="32px" flexDirection="column" alignItems="center" textColor="indigo.600">
+            <Flex mt="32px" flexDirection="column" alignItems="center" color="indigo.600">
                 <Heading as="h1" fontSize="32px" fontWeight="medium" lineHeight={1.5}>
                     Chọn nệm trong
                 </Heading>

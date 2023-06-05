@@ -20,7 +20,7 @@ export const RadioCardImage = (props: RadioCardImageProps) => {
                 {...getLabelProps()}
                 mt="8px"
                 textAlign="center"
-                textColor={state.isChecked ? 'indigo.600' : 'slate.500'}
+                color={state.isChecked ? 'indigo.600' : 'slate.500'}
             >
                 {props.label}
             </chakra.span>

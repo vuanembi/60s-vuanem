@@ -11,10 +11,7 @@ export const WizardProgress = () => {
             <Flex justifyContent="flex-end">
                 <Text color="indigo.600">
                     {activeStep + 1}
-                    <chakra.span color="slate.500">
-                        {' / '}
-                        {stepCount - 1}
-                    </chakra.span>
+                    <chakra.span color="slate.500">{` / ${stepCount - 1}`}</chakra.span>
                 </Text>
             </Flex>
             <Progress

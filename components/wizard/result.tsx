@@ -51,7 +51,7 @@ const WizardAnswer = ({ values }: WizardAnswerProps) => {
     return (
         <Popover placement="bottom-end">
             <PopoverTrigger>
-                <Flex tabIndex={0} role="button" alignItems="center" textColor="slate.500">
+                <Flex tabIndex={0} role="button" alignItems="center" color="slate.500">
                     Xem lại lựa chọn
                     <Icon as={HiOutlineChevronDown} ml="4px" />
                 </Flex>
@@ -68,7 +68,7 @@ const WizardAnswer = ({ values }: WizardAnswerProps) => {
                             {answers.map(({ question, answer }) => (
                                 <Flex key={question} flexDirection="column" alignItems="stretch">
                                     <Text color="slate.500">{question}</Text>
-                                    <Text textColor="indigo.600" fontWeight="bold">
+                                    <Text color="indigo.600" fontWeight="bold">
                                         {answer}
                                     </Text>
                                 </Flex>
@@ -90,7 +90,7 @@ export const WizardResult = ({ values }: { values: GetProductsFormValues }) => {
     return (
         <Flex flexDirection="column" alignItems="stretch">
             <Flex justifyContent="space-between">
-                <Text textColor="indigo.600" fontWeight="bold">
+                <Text color="indigo.600" fontWeight="bold">
                     Kết quả phù hợp
                 </Text>
                 <WizardAnswer values={values} />
@@ -107,7 +107,7 @@ export const WizardResult = ({ values }: { values: GetProductsFormValues }) => {
                             borderColor="indigo.600"
                         >
                             <Image src={item.imageSrc} alt={item.name} />
-                            <Text p="6px" textColor="indigo.600">
+                            <Text p="6px" color="indigo.600">
                                 {item.name}
                             </Text>
                         </Flex>
