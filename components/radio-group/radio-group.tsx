@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { useRouter } from 'next/router';
 import { Box, Button, Flex, Heading, SimpleGrid, useRadioGroup } from '@chakra-ui/react';
 import { useController, Control } from 'react-hook-form';
 import { useWizard } from 'react-use-wizard';
@@ -21,6 +22,8 @@ type RadioGroupProps<T extends RadioItemProps> = {
 };
 
 export const RadioGroup = <T extends RadioItemProps>(props: RadioGroupProps<T>) => {
+    const router = useRouter();
+
     const { name, question, options, columns, control, Item } = props;
 
     const { field } = useController({ control, name });
@@ -56,7 +59,11 @@ export const RadioGroup = <T extends RadioItemProps>(props: RadioGroupProps<T>) 
                 </SimpleGrid>
             </Box>
             <Flex w="full" position="absolute" bottom="0px" justifyContent="space-between">
-                <Button colorScheme="indigo" variant="outline" onClick={() => previousStep()}>
+                <Button
+                    colorScheme="indigo"
+                    variant="outline"
+                    onClick={() => (activeStep === 0 ? router.push('/') : previousStep())}
+                >
                     Quay lại
                 </Button>
                 <Button
