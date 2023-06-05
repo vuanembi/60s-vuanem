@@ -1,4 +1,3 @@
-import { Container } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
 import { Wizard as ReactWizard } from 'react-use-wizard';
 
