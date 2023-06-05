@@ -37,36 +37,38 @@ export const RadioGroup = <T extends RadioItemProps>(props: RadioGroupProps<T>) 
     const { previousStep, nextStep, activeStep, stepCount } = useWizard();
 
     return (
-        <Flex flexDirection="column" alignItems="stretch">
+        <Flex position="relative" minH="600px" flexDirection="column" alignItems="stretch">
             <Heading
                 as="h2"
-                mb="16px"
-                minH="54px"
-                color="#2D2E7F"
+                mb="24px"
+                color="indigo.600"
                 textAlign="center"
-                fontSize="18px"
+                fontSize="20px"
                 fontWeight="bold"
-                lineHeight="27px"
             >
                 {question}
             </Heading>
-            <Box height="450px">
+            <Box>
                 <SimpleGrid {...getRootProps()} columns={columns} spacing="20px">
                     {options.map((option, i) => (
                         <Item key={i} {...option} {...getRadioProps({ value: option.value })} />
                     ))}
                 </SimpleGrid>
             </Box>
-            <HStack mt="20px">
-                <Button onClick={() => previousStep()}>Quay lại</Button>
+            <Flex w="full" position="absolute" bottom="0px" justifyContent="space-between">
+                <Button colorScheme="indigo" variant="outline" onClick={() => previousStep()}>
+                    Quay lại
+                </Button>
                 <Button
+                    colorScheme="indigo"
+                    variant="solid"
                     type={activeStep === stepCount - 1 ? 'submit' : 'button'}
                     isDisabled={!control.getFieldState(field.name).isTouched}
                     onClick={() => nextStep()}
                 >
                     Tiếp tục
                 </Button>
-            </HStack>
+            </Flex>
         </Flex>
     );
 };

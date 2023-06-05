@@ -6,7 +6,7 @@ import { Header } from './header';
 export const Layout = ({ children }: PropsWithChildren) => {
     return (
         <Container
-            px="16px"
+            px="32px"
             pt="16px"
             display="flex"
             flexDirection="column"

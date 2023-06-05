@@ -6,7 +6,7 @@ import HERO_IMAGE from '../public/hero.png';
 
 const Home = () => {
     return (
-        <Flex position="relative" minH="600px" direction="column" alignItems="center">
+        <Flex position="relative" minH="600px" flexDirection="column" alignItems="center">
             <Box
                 mt="32px"
                 position="relative"

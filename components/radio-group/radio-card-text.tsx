@@ -15,19 +15,17 @@ export const RadioCardText = (props: RadioCardTextProps) => {
                 {...getRadioProps()}
                 cursor="pointer"
                 px="16px"
-                py="13px"
+                py="8px"
                 borderWidth="1px"
                 borderRadius="5px"
                 textAlign="center"
-                color="#9A9A9A"
-                bgColor="transparent"
-                borderColor="#D1D1D1"
-                fontWeight="normal"
+                color="indigo.600"
+                bgColor="white"
+                borderColor="indigo.600"
+                fontWeight="medium"
                 _checked={{
-                    color: '#2D2E7F',
-                    bgColor: '#E9E9FF',
-                    borderColor: '#2D2E7F',
-                    fontWeight: 'bold',
+                    color: 'white',
+                    bgColor: 'indigo.600',
                 }}
             >
                 <span>{props.label}</span>

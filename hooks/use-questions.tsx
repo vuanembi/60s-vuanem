@@ -83,7 +83,7 @@ export const useQuestion2: UseQuestion<RadioCardImageProps> = () => ({
 
 export const useQuestion3: UseQuestion<RadioCardTextProps> = () => ({
     name: 'question3',
-    question: 'Vấn đề sức khoẻ của bạn??',
+    question: 'Vấn đề sức khoẻ của bạn?',
     options: [
         { label: 'Đau lưng', value: '1' },
         { label: 'Đau cổ, vai và gáy', value: '2' },

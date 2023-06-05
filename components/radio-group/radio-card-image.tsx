@@ -4,8 +4,7 @@ import { Box, Flex, useRadio, chakra } from '@chakra-ui/react';
 export type RadioCardImageProps = {
     label: string;
     value: string;
-    SVG: any;
-    checkedSVG: any;
+    src: (isChecked: boolean) => any;
 };
 
 export const RadioCardImage = (props: RadioCardImageProps) => {
@@ -14,10 +13,15 @@ export const RadioCardImage = (props: RadioCardImageProps) => {
     return (
         <Flex as="label" flexDirection="column" alignItems="center">
             <input {...getInputProps()} />
-            <Box {...getRadioProps()} display="relative" cursor="pointer">
-                <NextImage src={state.isChecked ? props.checkedSVG : props.SVG} alt={props.label} />
+            <Box {...getRadioProps()} position="relative" cursor="pointer">
+                <NextImage src={props.src(state.isChecked)} alt={props.label} />
             </Box>
-            <chakra.span {...getLabelProps()} mt="10px" textAlign="center">
+            <chakra.span
+                {...getLabelProps()}
+                mt="8px"
+                textAlign="center"
+                textColor={state.isChecked ? 'indigo.600' : 'slate.500'}
+            >
                 {props.label}
             </chakra.span>
         </Flex>
