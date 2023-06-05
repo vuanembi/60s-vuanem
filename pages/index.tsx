@@ -19,7 +19,7 @@ const Home = () => {
                 <Image src={HERO_IMAGE} alt="Hero" />
             </Box>
             <Flex mt="32px" flexDirection="column" alignItems="center" textColor="indigo.600">
-                <Heading as="h1" fontWeight="medium">
+                <Heading as="h1">
                     Chọn nệm trong
                 </Heading>
                 <Heading as="h1" fontWeight="bold">

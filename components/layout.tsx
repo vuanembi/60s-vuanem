@@ -1,17 +1,18 @@
 import { PropsWithChildren } from 'react';
-import { Container } from '@chakra-ui/react';
+import { Container, Flex } from '@chakra-ui/react';
 
 import { Header } from './header';
 
 export const Layout = ({ children }: PropsWithChildren) => {
     return (
         <Container
+            as={Flex}
+            flexDirection="column"
+            alignItems="stretch"
+            maxW="container.lg"
             px="32px"
             pt="16px"
-            display="flex"
-            flexDirection="column"
             minH="100vh"
-            alignItems="stretch"
         >
             <Header />
             <main>{children}</main>

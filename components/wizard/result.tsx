@@ -1,19 +1,18 @@
-import NextImage from 'next/image';
 import {
-    Accordion,
-    AccordionItem,
-    AccordionButton,
-    AccordionPanel,
+    Divider,
     Flex,
-    Heading,
     Icon,
     Image,
+    Popover,
+    PopoverBody,
+    PopoverContent,
+    PopoverTrigger,
+    Portal,
     SimpleGrid,
     Text,
     VStack,
-    Box,
 } from '@chakra-ui/react';
-import { IoChevronDownCircle, IoChevronUpCircle } from 'react-icons/io5';
+import { HiOutlineChevronDown } from 'react-icons/hi';
 
 import {
     UseQuestion,
@@ -24,6 +23,7 @@ import {
     useQuestion5,
     useQuestion6,
 } from '../../hooks/use-questions';
+import { RadioCardTextProps } from '../radio-group/radio-card-text';
 import { GetProductsFormValues, useGetProducts } from '../../hooks/use-wizard-form';
 
 type WizardAnswerProps = {
@@ -31,6 +31,8 @@ type WizardAnswerProps = {
 };
 
 const WizardAnswer = ({ values }: WizardAnswerProps) => {
+    type Question = ReturnType<UseQuestion<RadioCardTextProps>>;
+
     const questions = [
         useQuestion1(),
         useQuestion2(),
@@ -38,53 +40,44 @@ const WizardAnswer = ({ values }: WizardAnswerProps) => {
         useQuestion4(),
         useQuestion5(),
         useQuestion6(),
-    ];
+    ] as ReturnType<UseQuestion<RadioCardTextProps>>[];
+
+    const answers = Object.entries(values).map(([id, answer], i) => {
+        const question = questions.find(({ name }) => name === id) as Question;
+        const { label } = question.options.find((x) => x.value === answer) as RadioCardTextProps;
+        return { question: question.question, answer: label };
+    });
 
     return (
-        <Accordion allowToggle fontSize="14px">
-            <AccordionItem>
-                {({ isExpanded }) => (
-                    <>
-                        <Heading as="h2" bgColor="#2D2E7F" color="white">
-                            <AccordionButton p="14px">
-                                <Flex as="span" flex="1" textAlign="left">
-                                    Xem lại các lựa chọn của bạn (8)
+        <Popover placement="bottom-end">
+            <PopoverTrigger>
+                <Flex tabIndex={0} role="button" alignItems="center" textColor="slate.500">
+                    Xem lại lựa chọn
+                    <Icon as={HiOutlineChevronDown} ml="4px" />
+                </Flex>
+            </PopoverTrigger>
+            <Portal>
+                <PopoverContent w="100%" borderColor="indigo.600" boxShadow="base">
+                    <PopoverBody>
+                        <VStack
+                            p="16px"
+                            spacing="8px"
+                            alignItems="stretch"
+                            divider={<Divider variant="dashed" />}
+                        >
+                            {answers.map(({ question, answer }) => (
+                                <Flex key={question} flexDirection="column" alignItems="stretch">
+                                    <Text color="slate.500">{question}</Text>
+                                    <Text textColor="indigo.600" fontWeight="bold">
+                                        {answer}
+                                    </Text>
                                 </Flex>
-                                {isExpanded ? (
-                                    <Icon as={IoChevronUpCircle} fontSize="20px" />
-                                ) : (
-                                    <Icon as={IoChevronDownCircle} fontSize="20px" />
-                                )}
-                            </AccordionButton>
-                        </Heading>
-                        <AccordionPanel p="0px">
-                            <VStack p="24px" spacing="26px" alignItems="stretch" bgColor="#F4F5FF">
-                                {Object.entries(values).map(([id, answer], i) => {
-                                    const question = questions.find(
-                                        ({ name }) => name === id,
-                                    ) as ReturnType<UseQuestion>;
-
-                                    const { label: answerLabel } = question.options.find(
-                                        ({ value }) => value === answer,
-                                    );
-
-                                    return (
-                                        <VStack key={id} spacing="14px" alignItems="stretch">
-                                            <Text color="#2D2E7F" fontWeight={700}>
-                                                {`${i + 1}. ${question.question}`}
-                                            </Text>
-                                            <Text p="10px" bgColor="white">
-                                                {answerLabel}
-                                            </Text>
-                                        </VStack>
-                                    );
-                                })}
-                            </VStack>
-                        </AccordionPanel>
-                    </>
-                )}
-            </AccordionItem>
-        </Accordion>
+                            ))}
+                        </VStack>
+                    </PopoverBody>
+                </PopoverContent>
+            </Portal>
+        </Popover>
     );
 };
 
@@ -95,21 +88,32 @@ export const WizardResult = ({ values }: { values: GetProductsFormValues }) => {
     });
 
     return (
-        <VStack alignItems="stretch">
-            <WizardAnswer values={values} />
+        <Flex flexDirection="column" alignItems="stretch">
+            <Flex justifyContent="space-between">
+                <Text textColor="indigo.600" fontWeight="bold">
+                    Kết quả phù hợp
+                </Text>
+                <WizardAnswer values={values} />
+            </Flex>
             {data && (
-                <VStack alignItems="stretch" color="#2D2E7F">
-                    <Text>{`Kết quả phù hợp (${data.length})`}</Text>
-                    <SimpleGrid columns={2} spacing="25px">
-                        {data.map((item) => (
-                            <VStack key={item.slug} alignItems="stretch">
-                                <Image src={item.imageSrc} alt={item.name} />
-                                <Text>{item.name}</Text>
-                            </VStack>
-                        ))}
-                    </SimpleGrid>
-                </VStack>
+                <SimpleGrid mt="24px" columns={{ base: 2, md: 3 }} spacing="20px">
+                    {data.map((item) => (
+                        <Flex
+                            key={item.slug}
+                            flexDirection="column"
+                            alignItems="stretch"
+                            borderRadius="6px"
+                            borderWidth="1px"
+                            borderColor="indigo.600"
+                        >
+                            <Image src={item.imageSrc} alt={item.name} />
+                            <Text p="6px" textColor="indigo.600">
+                                {item.name}
+                            </Text>
+                        </Flex>
+                    ))}
+                </SimpleGrid>
             )}
-        </VStack>
+        </Flex>
     );
 };

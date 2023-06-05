@@ -17,12 +17,11 @@ export const RadioCardText = (props: RadioCardTextProps) => {
                 px="16px"
                 py="8px"
                 borderWidth="1px"
-                borderRadius="5px"
+                borderRadius="6px"
                 textAlign="center"
                 color="indigo.600"
                 bgColor="white"
                 borderColor="indigo.600"
-                fontWeight="medium"
                 _checked={{
                     color: 'white',
                     bgColor: 'indigo.600',

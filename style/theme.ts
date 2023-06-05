@@ -31,5 +31,10 @@ export const theme = extendTheme({
                 fontWeight: 'bold',
             },
         },
+        Text: {
+            baseStyle: {
+                fontWeight: 'medium',
+            },
+        },
     },
 });
