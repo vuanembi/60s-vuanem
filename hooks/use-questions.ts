@@ -1,12 +1,11 @@
 import { GetProductsFormValues } from './use-wizard-form';
-import { RadioItemProps } from '../components/radio-group/radio-group';
 
 import Q2_ANY from '../public/question-2/any.svg';
 import Q2_ANY_CHECKED from '../public/question-2/any-checked.svg';
 import Q2_BACK from '../public/question-2/back.svg';
 import Q2_BACK_CHECKED from '../public/question-2/back-checked.svg';
-import Q2_FACEDOWN from '../public/question-2/face-down.svg';
-import Q2_FACEDOWN_CHECKED from '../public/question-2/face-down-checked.svg';
+import Q2_FACEDOWN from '../public/question-2/facedown.svg';
+import Q2_FACEDOWN_CHECKED from '../public/question-2/facedown-checked.svg';
 import Q2_SIDE from '../public/question-2/side.svg';
 import Q2_SIDE_CHECKED from '../public/question-2/side-checked.svg';
 
@@ -21,8 +20,8 @@ import Q5_ANY from '../public/question-5/any.svg';
 import Q5_ANY_CHECKED from '../public/question-5/any-checked.svg';
 import Q5_FIRM from '../public/question-5/firm.svg';
 import Q5_FIRM_CHECKED from '../public/question-5/firm-checked.svg';
-import Q5_NORMAL from '../public/question-5/normal.svg';
-import Q5_NORMAL_CHECKED from '../public/question-5/normal-checked.svg';
+import Q5_MEDIUM from '../public/question-5/medium.svg';
+import Q5_MEDIUM_CHECKED from '../public/question-5/medium-checked.svg';
 import Q5_SOFT_CHECKED from '../public/question-5/soft-checked.svg';
 import Q5_SOFT from '../public/question-5/soft.svg';
 
@@ -43,12 +42,12 @@ export type UseQuestion = () => {
 
 export const useQuestion1: UseQuestion = () => ({
     name: 'question1',
-    question: 'Tại sao bạn lại cần nệm mới?',
+    question: 'Nhu cầu của bạn?',
     options: [
-        { label: 'Đổi đệm hoặc nâng cấp nệm', value: '1' },
-        { label: 'Đệm cũ ngủ không ngon giấc', value: '2' },
+        { label: 'Đổi nệm hoặc nâng cấp nệm', value: '1' },
+        { label: 'Nệm cũ ngủ không ngon giấc', value: '2' },
         { label: 'Mua nệm mới, giường mới', value: '3' },
-        { label: 'Mua tặng cho bố mẹ & người thân', value: '4' },
+        { label: 'Mua tặng cha mẹ & người thân', value: '4' },
         { label: 'Cho con ngủ riêng', value: '5' },
     ],
 });
@@ -134,8 +133,8 @@ export const useQuestion5: UseQuestion = () => ({
         {
             label: 'Trung bình',
             value: '2',
-            checkedSVG: Q5_NORMAL_CHECKED,
-            SVG: Q5_NORMAL,
+            checkedSVG: Q5_MEDIUM_CHECKED,
+            SVG: Q5_MEDIUM,
         },
         {
             label: 'Cứng cáp',
