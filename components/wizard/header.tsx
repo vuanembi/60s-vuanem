@@ -1,7 +1,7 @@
 import { Flex, Progress, Text, chakra } from '@chakra-ui/react';
 import { useWizard } from 'react-use-wizard';
 
-import { Header } from '../header/header';
+import { Header } from '../header';
 
 export const WizardHeader = () => {
     const { activeStep, stepCount } = useWizard();
