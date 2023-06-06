@@ -1,6 +1,14 @@
 import { FC } from 'react';
 import { useRouter } from 'next/router';
-import { Box, Button, Flex, Heading, SimpleGrid, ResponsiveValue, useRadioGroup } from '@chakra-ui/react';
+import {
+    Box,
+    Button,
+    Flex,
+    Heading,
+    ResponsiveValue,
+    SimpleGrid,
+    useRadioGroup,
+} from '@chakra-ui/react';
 import { useController, Control } from 'react-hook-form';
 import { useWizard } from 'react-use-wizard';
 
@@ -29,8 +37,8 @@ export const WizardStep = <T extends RadioItemProps>(props: WizardStepProps<T>) 
     const { getRootProps, getRadioProps } = useRadioGroup({
         name,
         onChange: (value) => {
-            field.onBlur();
             field.onChange(value);
+            field.onBlur();
         },
         value: field.value,
     });
@@ -60,9 +68,9 @@ export const WizardStep = <T extends RadioItemProps>(props: WizardStepProps<T>) 
                 <Button
                     colorScheme="indigo"
                     variant="solid"
-                    type={activeStep === stepCount - 1 ? 'submit' : 'button'}
+                    type={activeStep === stepCount - 2 ? 'submit' : 'button'}
                     isDisabled={!control.getFieldState(field.name).isTouched}
-                    onClick={() => nextStep()}
+                    onClick={nextStep}
                 >
                     Tiếp tục
                 </Button>

@@ -79,17 +79,19 @@ const WizardAnswer = ({ values }: WizardAnswerProps) => {
     );
 };
 
-export const WizardResult = ({ values }: { values: GetProductsFormValues }) => {
-    const { data, isLoading } = useGetProducts({
-        cat: values.question6,
-        size: values.question4,
-    });
+type WizardResultProps = {
+    answers: GetProductsFormValues;
+    results: ReturnType<typeof useGetProducts>;
+};
+
+export const WizardResult = ({ answers, results }: WizardResultProps) => {
+    const { data = [], isLoading } = results;
 
     return (
         <Flex flexDirection="column" alignItems="stretch">
             <Flex justifyContent="space-between">
                 <Text fontWeight="bold">Kết quả phù hợp</Text>
-                <WizardAnswer values={values} />
+                <WizardAnswer values={answers} />
             </Flex>
             {data && (
                 <SimpleGrid mt="24px" columns={{ base: 2, md: 3 }} spacing="20px">

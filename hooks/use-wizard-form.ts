@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 
@@ -18,22 +19,26 @@ export type GetProductsBody = {
 export type Product = {
     name: string;
     slug: string;
-    image_path: string;
+    imageSrc: string;
 };
 
 export type GetProductResponse = {
-    data: Product[];
+    data: {
+        name: string;
+        slug: string;
+        image_path: string;
+    }[];
 };
 
-export const useGetProducts = (data: GetProductsBody) => {
-    return useQuery({
-        queryKey: ['products', data],
+export const useGetProducts = (body: GetProductsBody, enabled: boolean) => {
+    return useQuery<Product[]>({
+        queryKey: ['products', body],
         queryFn: async () => {
             return axios
                 .request<GetProductResponse>({
                     method: 'POST',
                     url: 'https://vuanem.com/api/get-product-survey-60s',
-                    data,
+                    data: body,
                 })
                 .then((response) => response.data)
                 .then((data) => {
@@ -49,5 +54,8 @@ export const useGetProducts = (data: GetProductsBody) => {
                         .slice(0, 6);
                 });
         },
+        staleTime: Infinity,
+        refetchIntervalInBackground: false,
+        enabled,
     });
 };
