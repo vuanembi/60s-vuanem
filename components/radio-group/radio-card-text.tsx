@@ -6,10 +6,10 @@ export type RadioCardTextProps = {
 };
 
 export const RadioCardText = (props: RadioCardTextProps) => {
-    const { getInputProps, getRadioProps } = useRadio(props);
+    const { getInputProps, getRadioProps, getLabelProps, getRootProps } = useRadio(props);
 
     return (
-        <Box as="label">
+        <Box as="label" {...getRootProps()} {...getLabelProps()}>
             <input {...getInputProps()} />
             <Box
                 {...getRadioProps()}
