@@ -32,7 +32,7 @@ export const WizardStep = <T extends RadioItemProps>(props: WizardStepProps<T>) 
 
     const { name, question, options, columns, control, Item } = props;
 
-    const { field } = useController({ control, name });
+    const { field, fieldState } = useController({ control, name });
 
     const { getRootProps, getRadioProps } = useRadioGroup({
         name,
@@ -69,7 +69,7 @@ export const WizardStep = <T extends RadioItemProps>(props: WizardStepProps<T>) 
                     colorScheme="indigo"
                     variant="solid"
                     type={activeStep === stepCount - 2 ? 'submit' : 'button'}
-                    isDisabled={!control.getFieldState(field.name).isTouched}
+                    isDisabled={!fieldState.isTouched}
                     onClick={nextStep}
                 >
                     Tiếp tục
