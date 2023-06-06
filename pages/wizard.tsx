@@ -43,19 +43,19 @@ const Wizard = () => {
                 <WizardStep
                     {...useQuestion4()}
                     control={control}
-                    columns={2}
+                    columns={{ base: 2, md: 3 }}
                     Item={RadioCardImage}
                 />
                 <WizardStep
                     {...useQuestion5()}
                     control={control}
-                    columns={2}
+                    columns={{ base: 2, md: 4 }}
                     Item={RadioCardImage}
                 />
                 <WizardStep
                     {...useQuestion6()}
                     control={control}
-                    columns={2}
+                    columns={{ base: 2, md: 4 }}
                     Item={RadioCardImage}
                 />
                 <WizardResult values={watch()} />

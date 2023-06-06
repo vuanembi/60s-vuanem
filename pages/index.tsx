@@ -31,8 +31,7 @@ const Home = () => {
                 href="/wizard"
                 position="absolute"
                 bottom="0px"
-                color="white"
-                bgColor="indigo.600"
+                colorScheme="indigo"
             >
                 Bắt đầu
             </Button>

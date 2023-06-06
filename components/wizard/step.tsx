@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useRouter } from 'next/router';
-import { Box, Button, Flex, Heading, SimpleGrid, useRadioGroup } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, SimpleGrid, ResponsiveValue, useRadioGroup } from '@chakra-ui/react';
 import { useController, Control } from 'react-hook-form';
 import { useWizard } from 'react-use-wizard';
 
@@ -15,7 +15,7 @@ type WizardStepProps<T extends RadioItemProps> = {
     question: string;
     options: T[];
     control: Control<GetProductsFormValues>;
-    columns: number;
+    columns: ResponsiveValue<number>;
     Item: FC<T>;
 };
 
