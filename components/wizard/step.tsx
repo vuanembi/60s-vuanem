@@ -59,15 +59,12 @@ export const WizardStep = <T extends RadioItemProps>(props: WizardStepProps<T>) 
             </Box>
             <Flex w="full" position="absolute" bottom="0px" justifyContent="space-between">
                 <Button
-                    colorScheme="indigo"
                     variant="outline"
                     onClick={() => (isFirstStep ? router.push('/') : previousStep())}
                 >
                     Quay lại
                 </Button>
                 <Button
-                    colorScheme="indigo"
-                    variant="solid"
                     type={activeStep === stepCount - 2 ? 'submit' : 'button'}
                     isDisabled={!fieldState.isTouched}
                     onClick={nextStep}

@@ -30,6 +30,9 @@ export const theme = extendTheme({
                 px: '8px',
                 fontWeight: 'bold',
             },
+            defaultProps: {
+                colorScheme: 'indigo',
+            },
         },
         Heading: {
             baseStyle: {

@@ -26,13 +26,7 @@ const Home = () => {
                     60s
                 </Heading>
             </Flex>
-            <Button
-                as={NextLink}
-                href="/wizard"
-                position="absolute"
-                bottom="0px"
-                colorScheme="indigo"
-            >
+            <Button as={NextLink} href="/wizard" position="absolute" bottom="0px">
                 Bắt đầu
             </Button>
         </Flex>
