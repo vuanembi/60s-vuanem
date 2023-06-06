@@ -31,8 +31,15 @@ export const theme = extendTheme({
                 fontWeight: 'bold',
             },
         },
+        Heading: {
+            baseStyle: {
+                color: 'indigo.600',
+                fontWeight: 'bold',
+            },
+        },
         Text: {
             baseStyle: {
+                color: 'indigo.600',
                 fontWeight: 'medium',
             },
         },

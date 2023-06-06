@@ -44,10 +44,8 @@ export const RadioGroup = <T extends RadioItemProps>(props: RadioGroupProps<T>) 
             <Heading
                 as="h2"
                 mb="24px"
-                color="indigo.600"
                 textAlign="center"
                 fontSize="20px"
-                fontWeight="bold"
             >
                 {question}
             </Heading>

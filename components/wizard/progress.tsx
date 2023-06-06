@@ -9,7 +9,7 @@ export const WizardProgress = () => {
     return activeStep !== stepCount - 1 ? (
         <Flex mb="24px" flexDirection="column">
             <Flex justifyContent="flex-end">
-                <Text color="indigo.600">
+                <Text>
                     {activeStep + 1}
                     <chakra.span color="slate.500">{` / ${stepCount - 1}`}</chakra.span>
                 </Text>

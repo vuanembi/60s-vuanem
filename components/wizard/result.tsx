@@ -68,9 +68,7 @@ const WizardAnswer = ({ values }: WizardAnswerProps) => {
                             {answers.map(({ question, answer }) => (
                                 <Flex key={question} flexDirection="column" alignItems="stretch">
                                     <Text color="slate.500">{question}</Text>
-                                    <Text color="indigo.600" fontWeight="bold">
-                                        {answer}
-                                    </Text>
+                                    <Text fontWeight="bold">{answer}</Text>
                                 </Flex>
                             ))}
                         </VStack>
@@ -90,7 +88,7 @@ export const WizardResult = ({ values }: { values: GetProductsFormValues }) => {
     return (
         <Flex flexDirection="column" alignItems="stretch">
             <Flex justifyContent="space-between">
-                <Text color="indigo.600" fontWeight="bold">
+                <Text fontWeight="bold">
                     Kết quả phù hợp
                 </Text>
                 <WizardAnswer values={values} />
@@ -107,7 +105,7 @@ export const WizardResult = ({ values }: { values: GetProductsFormValues }) => {
                             borderColor="indigo.600"
                         >
                             <Image src={item.imageSrc} alt={item.name} />
-                            <Text p="6px" color="indigo.600">
+                            <Text p="6px">
                                 {item.name}
                             </Text>
                         </Flex>
