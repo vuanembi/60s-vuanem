@@ -1,4 +1,5 @@
 import {
+    Button,
     Divider,
     Flex,
     Icon,
@@ -51,10 +52,9 @@ const WizardAnswer = ({ values }: WizardAnswerProps) => {
     return (
         <Popover placement="bottom-end">
             <PopoverTrigger>
-                <Flex tabIndex={0} role="button" alignItems="center" color="slate.500">
+                <Button variant="link" rightIcon={<Icon as={HiOutlineChevronDown} />}>
                     Xem lại lựa chọn
-                    <Icon as={HiOutlineChevronDown} ml="4px" />
-                </Flex>
+                </Button>
             </PopoverTrigger>
             <Portal>
                 <PopoverContent w="100%" borderColor="indigo.600" boxShadow="base">
@@ -88,9 +88,7 @@ export const WizardResult = ({ values }: { values: GetProductsFormValues }) => {
     return (
         <Flex flexDirection="column" alignItems="stretch">
             <Flex justifyContent="space-between">
-                <Text fontWeight="bold">
-                    Kết quả phù hợp
-                </Text>
+                <Text fontWeight="bold">Kết quả phù hợp</Text>
                 <WizardAnswer values={values} />
             </Flex>
             {data && (
@@ -105,9 +103,7 @@ export const WizardResult = ({ values }: { values: GetProductsFormValues }) => {
                             borderColor="indigo.600"
                         >
                             <Image src={item.imageSrc} alt={item.name} />
-                            <Text p="6px">
-                                {item.name}
-                            </Text>
+                            <Text p="6px">{item.name}</Text>
                         </Flex>
                     ))}
                 </SimpleGrid>
