@@ -9,7 +9,7 @@ import {
     useQuestion5,
     useQuestion6,
 } from '../hooks/use-questions';
-import { RadioGroup } from '../components/radio-group/radio-group';
+import { WizardStep } from '../components/wizard/step';
 import { RadioCardText } from '../components/radio-group/radio-card-text';
 import { RadioCardImage } from '../components/radio-group/radio-card-image';
 import { WizardProgress } from '../components/wizard/progress';
@@ -22,37 +22,37 @@ const Wizard = () => {
     return (
         <form onSubmit={handleSubmit((data) => console.log(data))}>
             <ReactWizard header={<WizardProgress />}>
-                <RadioGroup
+                <WizardStep
                     {...useQuestion1()}
                     control={control}
                     columns={1}
                     Item={RadioCardText}
                 />
-                <RadioGroup
+                <WizardStep
                     {...useQuestion2()}
                     control={control}
                     columns={1}
                     Item={RadioCardImage}
                 />
-                <RadioGroup
+                <WizardStep
                     {...useQuestion3()}
                     control={control}
                     columns={1}
                     Item={RadioCardText}
                 />
-                <RadioGroup
+                <WizardStep
                     {...useQuestion4()}
                     control={control}
                     columns={2}
                     Item={RadioCardImage}
                 />
-                <RadioGroup
+                <WizardStep
                     {...useQuestion5()}
                     control={control}
                     columns={2}
                     Item={RadioCardImage}
                 />
-                <RadioGroup
+                <WizardStep
                     {...useQuestion6()}
                     control={control}
                     columns={2}

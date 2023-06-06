@@ -4,15 +4,13 @@ import { Box, Button, Flex, Heading, SimpleGrid, useRadioGroup } from '@chakra-u
 import { useController, Control } from 'react-hook-form';
 import { useWizard } from 'react-use-wizard';
 
+import { RadioCardImageProps } from '../radio-group/radio-card-image';
+import { RadioCardTextProps } from '../radio-group/radio-card-text';
 import { GetProductsFormValues } from '../../hooks/use-wizard-form';
 
-export type RadioItemProps = {
-    label: string;
-    value: string;
-    [key: string]: any;
-};
+type RadioItemProps = RadioCardImageProps | RadioCardTextProps;
 
-type RadioGroupProps<T extends RadioItemProps> = {
+type WizardStepProps<T extends RadioItemProps> = {
     name: keyof GetProductsFormValues;
     question: string;
     options: T[];
@@ -21,7 +19,7 @@ type RadioGroupProps<T extends RadioItemProps> = {
     Item: FC<T>;
 };
 
-export const RadioGroup = <T extends RadioItemProps>(props: RadioGroupProps<T>) => {
+export const WizardStep = <T extends RadioItemProps>(props: WizardStepProps<T>) => {
     const router = useRouter();
 
     const { name, question, options, columns, control, Item } = props;
@@ -37,16 +35,11 @@ export const RadioGroup = <T extends RadioItemProps>(props: RadioGroupProps<T>) 
         value: field.value,
     });
 
-    const { previousStep, nextStep, activeStep, stepCount } = useWizard();
+    const { previousStep, nextStep, activeStep, stepCount, isFirstStep } = useWizard();
 
     return (
         <Flex position="relative" minH="600px" flexDirection="column" alignItems="stretch">
-            <Heading
-                as="h2"
-                mb="24px"
-                textAlign="center"
-                fontSize="20px"
-            >
+            <Heading as="h2" mb="24px" textAlign="center" fontSize="20px">
                 {question}
             </Heading>
             <Box>
@@ -60,7 +53,7 @@ export const RadioGroup = <T extends RadioItemProps>(props: RadioGroupProps<T>) 
                 <Button
                     colorScheme="indigo"
                     variant="outline"
-                    onClick={() => (activeStep === 0 ? router.push('/') : previousStep())}
+                    onClick={() => (isFirstStep ? router.push('/') : previousStep())}
                 >
                     Quay lại
                 </Button>
