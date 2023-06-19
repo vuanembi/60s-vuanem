@@ -10,6 +10,7 @@ import {
     useQuestion4,
     useQuestion5,
     useQuestion6,
+    useQuestion7,
 } from '../hooks/use-questions';
 import { GetProductsFormValues, useGetProducts } from '../hooks/use-wizard-form';
 import { RadioCardText } from '../components/radio-question/radio-card-text';
@@ -62,11 +63,17 @@ const Wizard = () => {
                 <RadioQuestionStep
                     {...useQuestion5()}
                     control={control}
+                    columns={1}
+                    Item={RadioCardText}
+                />
+                <RadioQuestionStep
+                    {...useQuestion6()}
+                    control={control}
                     columns={{ base: 2, md: 4 }}
                     Item={RadioCardImage}
                 />
                 <RadioQuestionStep
-                    {...useQuestion6()}
+                    {...useQuestion7()}
                     control={control}
                     columns={{ base: 2, md: 4 }}
                     Item={RadioCardImage}

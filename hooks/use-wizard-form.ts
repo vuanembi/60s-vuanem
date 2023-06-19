@@ -12,6 +12,7 @@ export type GetProductsFormValues = {
     question4: string;
     question5: string;
     question6: string;
+    question7: string;
 };
 
 export type GetProductsBody = {

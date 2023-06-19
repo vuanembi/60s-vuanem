@@ -19,10 +19,11 @@ import {
     UseRadioQuestion,
     useQuestion1,
     useQuestion2,
-    useQuestion3,
+    useQuestion3s,
     useQuestion4,
     useQuestion5,
     useQuestion6,
+    useQuestion7,
 } from '../../hooks/use-questions';
 import { RadioCardTextProps } from '../radio-question/radio-card-text';
 import { GetProductsFormValues, useGetProducts } from '../../hooks/use-wizard-form';
@@ -37,16 +38,19 @@ const WizardAnswer = ({ values }: WizardAnswerProps) => {
     const questions = [
         useQuestion1(),
         useQuestion2(),
-        useQuestion3(),
+        ...useQuestion3s().questions,
         useQuestion4(),
         useQuestion5(),
         useQuestion6(),
+        useQuestion7(),
     ] as ReturnType<UseRadioQuestion<RadioCardTextProps>>[];
 
     const answers = Object.entries(values).map(([id, answer], i) => {
         const question = questions.find(({ name }) => name === id) as Question;
-        const { label } = question.options.find((x) => x.value === answer) as RadioCardTextProps;
-        return { question: question.question, answer: label };
+        const answer_ = question.options
+            ? (question.options.find((x) => x.value === answer) as RadioCardTextProps).label
+            : answer;
+        return { question: question.question, answer: answer_ };
     });
 
     return (
@@ -85,7 +89,7 @@ type WizardResultProps = {
 };
 
 export const WizardResult = ({ answers, results }: WizardResultProps) => {
-    const { data = [], isLoading } = results;
+    const { data = [] } = results;
 
     return (
         <Flex flexDirection="column" alignItems="stretch">

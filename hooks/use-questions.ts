@@ -3,39 +3,39 @@ import { RadioCardTextProps } from '../components/radio-question/radio-card-text
 import { RadioCardImageProps } from '../components/radio-question/radio-card-image';
 import { SliderQuestionStepProps } from '../components/slider-question/slider-question-step';
 
-import Q2_ANY from '../public/question-2/any.png';
-import Q2_ANY_CHECKED from '../public/question-2/any-checked.png';
-import Q2_BACK from '../public/question-2/back.png';
-import Q2_BACK_CHECKED from '../public/question-2/back-checked.png';
-import Q2_FACEDOWN from '../public/question-2/facedown.png';
-import Q2_FACEDOWN_CHECKED from '../public/question-2/facedown-checked.png';
-import Q2_SIDE from '../public/question-2/side.png';
-import Q2_SIDE_CHECKED from '../public/question-2/side-checked.png';
+import Q2_ANY from '../public/q2/any.png';
+import Q2_ANY_CHECKED from '../public/q2/any-checked.png';
+import Q2_BACK from '../public/q2/back.png';
+import Q2_BACK_CHECKED from '../public/q2/back-checked.png';
+import Q2_FACEDOWN from '../public/q2/facedown.png';
+import Q2_FACEDOWN_CHECKED from '../public/q2/facedown-checked.png';
+import Q2_SIDE from '../public/q2/side.png';
+import Q2_SIDE_CHECKED from '../public/q2/side-checked.png';
 
-import Q4_SINGLE from '../public/question-4/single.png';
-import Q4_SINGLE_CHECKED from '../public/question-4/single-checked.png';
-import Q4_DOUBLE from '../public/question-4/double.png';
-import Q4_DOUBLE_CHECKED from '../public/question-4/double-checked.png';
-import Q4_TRIPLE_CHECKED from '../public/question-4/triple-checked.png';
-import Q4_TRIPLE from '../public/question-4/triple.png';
+import Q4_SINGLE from '../public/q4/single.png';
+import Q4_SINGLE_CHECKED from '../public/q4/single-checked.png';
+import Q4_DOUBLE from '../public/q4/double.png';
+import Q4_DOUBLE_CHECKED from '../public/q4/double-checked.png';
+import Q4_TRIPLE_CHECKED from '../public/q4/triple-checked.png';
+import Q4_TRIPLE from '../public/q4/triple.png';
 
-import Q5_ANY from '../public/question-5/any.png';
-import Q5_ANY_CHECKED from '../public/question-5/any-checked.png';
-import Q5_FIRM from '../public/question-5/firm.png';
-import Q5_FIRM_CHECKED from '../public/question-5/firm-checked.png';
-import Q5_MEDIUM from '../public/question-5/medium.png';
-import Q5_MEDIUM_CHECKED from '../public/question-5/medium-checked.png';
-import Q5_SOFT_CHECKED from '../public/question-5/soft-checked.png';
-import Q5_SOFT from '../public/question-5/soft.png';
+import Q6_ANY from '../public/q6/any.png';
+import Q6_ANY_CHECKED from '../public/q6/any-checked.png';
+import Q6_FIRM from '../public/q6/firm.png';
+import Q6_FIRM_CHECKED from '../public/q6/firm-checked.png';
+import Q6_MEDIUM from '../public/q6/medium.png';
+import Q6_MEDIUM_CHECKED from '../public/q6/medium-checked.png';
+import Q6_SOFT_CHECKED from '../public/q6/soft-checked.png';
+import Q6_SOFT from '../public/q6/soft.png';
 
-import Q6_COMPRESS from '../public/question-6/compress.png';
-import Q6_COMPRESS_CHECKED from '../public/question-6/compress-checked.png';
-import Q6_FOAM from '../public/question-6/foam.png';
-import Q6_FOAM_CHECKED from '../public/question-6/foam-checked.png';
-import Q6_LATEX from '../public/question-6/latex.png';
-import Q6_LATEX_CHECKED from '../public/question-6/latex-checked.png';
-import Q6_SPRING_CHECKED from '../public/question-6/spring-checked.png';
-import Q6_SPRING from '../public/question-6/spring.png';
+import Q7_COMPRESS from '../public/q7/compress.png';
+import Q7_COMPRESS_CHECKED from '../public/q7/compress-checked.png';
+import Q7_FOAM from '../public/q7/foam.png';
+import Q7_FOAM_CHECKED from '../public/q7/foam-checked.png';
+import Q7_LATEX from '../public/q7/latex.png';
+import Q7_LATEX_CHECKED from '../public/q7/latex-checked.png';
+import Q7_SPRING_CHECKED from '../public/q7/spring-checked.png';
+import Q7_SPRING from '../public/q7/spring.png';
 
 export type UseRadioQuestion<T> = () => {
     name: keyof GetProductsFormValues;
@@ -104,56 +104,66 @@ export const useQuestion4: UseRadioQuestion<RadioCardImageProps> = () => ({
     ],
 });
 
-export const useQuestion5: UseRadioQuestion<RadioCardImageProps> = () => ({
+export const useQuestion5: UseRadioQuestion<RadioCardTextProps> = () => ({
     name: 'question5',
-    question: 'Độ cứng mềm mong muốn?',
+    question: 'Độ cao của gối bạn sử dụng?',
     options: [
-        {
-            label: 'Mềm mại',
-            value: '1',
-            src: (isChecked) => (isChecked ? Q5_SOFT_CHECKED : Q5_SOFT),
-        },
-        {
-            label: 'Trung bình',
-            value: '2',
-            src: (isChecked) => (isChecked ? Q5_MEDIUM_CHECKED : Q5_MEDIUM),
-        },
-        {
-            label: 'Cứng cáp',
-            value: '3',
-            src: (isChecked) => (isChecked ? Q5_FIRM_CHECKED : Q5_FIRM),
-        },
-        {
-            label: 'Tôi không rõ',
-            value: '4',
-            src: (isChecked) => (isChecked ? Q5_ANY_CHECKED : Q5_ANY),
-        },
+        { label: 'Gối cao', value: '1' },
+        { label: 'Gối thấp', value: '2' },
+        { label: 'Linh hoạt', value: '3' },
     ],
 });
 
 export const useQuestion6: UseRadioQuestion<RadioCardImageProps> = () => ({
     name: 'question6',
+    question: 'Độ cứng mềm mong muốn?',
+    options: [
+        {
+            label: 'Mềm mại',
+            value: '1',
+            src: (isChecked) => (isChecked ? Q6_SOFT_CHECKED : Q6_SOFT),
+        },
+        {
+            label: 'Trung bình',
+            value: '2',
+            src: (isChecked) => (isChecked ? Q6_MEDIUM_CHECKED : Q6_MEDIUM),
+        },
+        {
+            label: 'Cứng cáp',
+            value: '3',
+            src: (isChecked) => (isChecked ? Q6_FIRM_CHECKED : Q6_FIRM),
+        },
+        {
+            label: 'Tôi không rõ',
+            value: '4',
+            src: (isChecked) => (isChecked ? Q6_ANY_CHECKED : Q6_ANY),
+        },
+    ],
+});
+
+export const useQuestion7: UseRadioQuestion<RadioCardImageProps> = () => ({
+    name: 'question7',
     question: 'Loại / Chất liệu mong muốn?',
     options: [
         {
             label: 'Lò xo',
             value: '31',
-            src: (isChecked) => (isChecked ? Q6_SPRING_CHECKED : Q6_SPRING),
+            src: (isChecked) => (isChecked ? Q7_SPRING_CHECKED : Q7_SPRING),
         },
         {
             label: 'Foam',
             value: '28',
-            src: (isChecked) => (isChecked ? Q6_FOAM_CHECKED : Q6_FOAM),
+            src: (isChecked) => (isChecked ? Q7_FOAM_CHECKED : Q7_FOAM),
         },
         {
             label: 'Cao su',
             value: '34',
-            src: (isChecked) => (isChecked ? Q6_LATEX_CHECKED : Q6_LATEX),
+            src: (isChecked) => (isChecked ? Q7_LATEX_CHECKED : Q7_LATEX),
         },
         {
             label: 'Bông ép',
             value: '39',
-            src: (isChecked) => (isChecked ? Q6_COMPRESS_CHECKED : Q6_COMPRESS),
+            src: (isChecked) => (isChecked ? Q7_COMPRESS_CHECKED : Q7_COMPRESS),
         },
     ],
 });

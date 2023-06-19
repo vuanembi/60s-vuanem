@@ -1,3 +1,4 @@
+import { useCallback, useEffect } from 'react';
 import { useController, Control } from 'react-hook-form';
 import {
     Box,
@@ -20,24 +21,24 @@ export type QuestionSliderProps = {
 export const QuestionSlider = ({ control, name, question }: QuestionSliderProps) => {
     const { field } = useController({ control, name });
 
-    const labelStyles = {
-        mt: '16px',
-        fontSize: '14px',
-    };
+    const onChange = useCallback(
+        (value: number) => {
+            field.onBlur();
+            field.onChange(value);
+        },
+        [field],
+    );
+
+    useEffect(() => {
+        onChange(0);
+    }, [onChange]);
+
+    const labelStyles = { mt: '16px', fontSize: '14px' };
 
     return (
         <Box>
             <Text mb="14px">{question}</Text>
-            <Slider
-                defaultValue={0}
-                min={0}
-                max={3}
-                step={1}
-                onChangeEnd={(value) => {
-                    field.onBlur();
-                    field.onChange(value);
-                }}
-            >
+            <Slider defaultValue={0} min={0} max={3} step={1} onChangeEnd={onChange}>
                 <SliderMark value={0} {...labelStyles}>
                     0
                 </SliderMark>
