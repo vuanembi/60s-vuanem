@@ -1,6 +1,7 @@
 import { GetProductsFormValues } from './use-wizard-form';
-import { RadioCardTextProps } from '../components/radio-group/radio-card-text';
-import { RadioCardImageProps } from '../components/radio-group/radio-card-image';
+import { RadioCardTextProps } from '../components/radio-question/radio-card-text';
+import { RadioCardImageProps } from '../components/radio-question/radio-card-image';
+import { SliderQuestionStepProps } from '../components/slider-question/slider-question-step';
 
 import Q2_ANY from '../public/question-2/any.png';
 import Q2_ANY_CHECKED from '../public/question-2/any-checked.png';
@@ -36,13 +37,13 @@ import Q6_LATEX_CHECKED from '../public/question-6/latex-checked.png';
 import Q6_SPRING_CHECKED from '../public/question-6/spring-checked.png';
 import Q6_SPRING from '../public/question-6/spring.png';
 
-export type UseQuestion<T> = () => {
+export type UseRadioQuestion<T> = () => {
     name: keyof GetProductsFormValues;
     question: string;
     options: T[];
 };
 
-export const useQuestion1: UseQuestion<RadioCardTextProps> = () => ({
+export const useQuestion1: UseRadioQuestion<RadioCardTextProps> = () => ({
     name: 'question1',
     question: 'Nhu cầu của bạn?',
     options: [
@@ -54,7 +55,7 @@ export const useQuestion1: UseQuestion<RadioCardTextProps> = () => ({
     ],
 });
 
-export const useQuestion2: UseQuestion<RadioCardImageProps> = () => ({
+export const useQuestion2: UseRadioQuestion<RadioCardImageProps> = () => ({
     name: 'question2',
     question: 'Tư thế nằm của bạn?',
     options: [
@@ -81,19 +82,7 @@ export const useQuestion2: UseQuestion<RadioCardImageProps> = () => ({
     ],
 });
 
-export const useQuestion3: UseQuestion<RadioCardTextProps> = () => ({
-    name: 'question3',
-    question: 'Vấn đề sức khoẻ của bạn?',
-    options: [
-        { label: 'Đau lưng', value: '1' },
-        { label: 'Đau cổ, vai và gáy', value: '2' },
-        { label: 'Đau vùng thắt lưng', value: '3' },
-        { label: 'Nóng lưng', value: '4' },
-        { label: 'Không gặp các vấn đề trên', value: '5' },
-    ],
-});
-
-export const useQuestion4: UseQuestion<RadioCardImageProps> = () => ({
+export const useQuestion4: UseRadioQuestion<RadioCardImageProps> = () => ({
     name: 'question4',
     question: 'Kích cỡ sản phẩm mong muốn?',
     options: [
@@ -115,7 +104,7 @@ export const useQuestion4: UseQuestion<RadioCardImageProps> = () => ({
     ],
 });
 
-export const useQuestion5: UseQuestion<RadioCardImageProps> = () => ({
+export const useQuestion5: UseRadioQuestion<RadioCardImageProps> = () => ({
     name: 'question5',
     question: 'Độ cứng mềm mong muốn?',
     options: [
@@ -142,7 +131,7 @@ export const useQuestion5: UseQuestion<RadioCardImageProps> = () => ({
     ],
 });
 
-export const useQuestion6: UseQuestion<RadioCardImageProps> = () => ({
+export const useQuestion6: UseRadioQuestion<RadioCardImageProps> = () => ({
     name: 'question6',
     question: 'Loại / Chất liệu mong muốn?',
     options: [
@@ -165,6 +154,30 @@ export const useQuestion6: UseQuestion<RadioCardImageProps> = () => ({
             label: 'Bông ép',
             value: '39',
             src: (isChecked) => (isChecked ? Q6_COMPRESS_CHECKED : Q6_COMPRESS),
+        },
+    ],
+});
+
+type UseSliderQuestions = () => Omit<SliderQuestionStepProps, 'control'>;
+
+export const useQuestion3s: UseSliderQuestions = () => ({
+    question: 'Bệnh lý liên quan của bạn?',
+    questions: [
+        {
+            name: 'question31',
+            question: 'Bạn ngáy khi ngủ?',
+        },
+        {
+            name: 'question32',
+            question: 'Bạn bị trào ngược dạ dày?',
+        },
+        {
+            name: 'question33',
+            question: 'Bạn bị đau mỏi lưng?',
+        },
+        {
+            name: 'question34',
+            question: 'Bạn bị đau mỏi vai gáy?',
         },
     ],
 });

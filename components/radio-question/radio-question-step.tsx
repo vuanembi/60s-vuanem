@@ -12,22 +12,22 @@ import {
 import { useController, Control } from 'react-hook-form';
 import { useWizard } from 'react-use-wizard';
 
-import { RadioCardImageProps } from '../radio-question/radio-card-image';
-import { RadioCardTextProps } from '../radio-question/radio-card-text';
+import { RadioCardImageProps } from './radio-card-image';
+import { RadioCardTextProps } from './radio-card-text';
 import { GetProductsFormValues } from '../../hooks/use-wizard-form';
 
 type RadioItemProps = RadioCardImageProps | RadioCardTextProps;
 
-type WizardStepProps<T extends RadioItemProps> = {
+type RadioQuestionStepProps<T extends RadioItemProps> = {
     name: keyof GetProductsFormValues;
-    question: string;
     options: T[];
+    question: string;
     control: Control<GetProductsFormValues>;
     columns: ResponsiveValue<number>;
     Item: FC<T>;
 };
 
-export const WizardStep = <T extends RadioItemProps>(props: WizardStepProps<T>) => {
+export const RadioQuestionStep = <T extends RadioItemProps>(props: RadioQuestionStepProps<T>) => {
     const router = useRouter();
 
     const { name, question, options, columns, control, Item } = props;

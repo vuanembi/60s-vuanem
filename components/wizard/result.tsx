@@ -16,7 +16,7 @@ import {
 import { HiOutlineChevronDown } from 'react-icons/hi';
 
 import {
-    UseQuestion,
+    UseRadioQuestion,
     useQuestion1,
     useQuestion2,
     useQuestion3,
@@ -24,7 +24,7 @@ import {
     useQuestion5,
     useQuestion6,
 } from '../../hooks/use-questions';
-import { RadioCardTextProps } from '../radio-group/radio-card-text';
+import { RadioCardTextProps } from '../radio-question/radio-card-text';
 import { GetProductsFormValues, useGetProducts } from '../../hooks/use-wizard-form';
 
 type WizardAnswerProps = {
@@ -32,7 +32,7 @@ type WizardAnswerProps = {
 };
 
 const WizardAnswer = ({ values }: WizardAnswerProps) => {
-    type Question = ReturnType<UseQuestion<RadioCardTextProps>>;
+    type Question = ReturnType<UseRadioQuestion<RadioCardTextProps>>;
 
     const questions = [
         useQuestion1(),
@@ -41,7 +41,7 @@ const WizardAnswer = ({ values }: WizardAnswerProps) => {
         useQuestion4(),
         useQuestion5(),
         useQuestion6(),
-    ] as ReturnType<UseQuestion<RadioCardTextProps>>[];
+    ] as ReturnType<UseRadioQuestion<RadioCardTextProps>>[];
 
     const answers = Object.entries(values).map(([id, answer], i) => {
         const question = questions.find(({ name }) => name === id) as Question;
