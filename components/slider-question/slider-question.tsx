@@ -16,7 +16,7 @@ export const QuestionSlider = ({ control, name, question }: QuestionSliderProps)
     const onChange = useCallback(
         (value: number) => {
             field.onBlur();
-            field.onChange(value);
+            field.onChange(value.toString());
         },
         [field],
     );
