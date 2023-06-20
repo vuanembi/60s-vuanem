@@ -21,7 +21,7 @@ export const RadioCardImage = (props: RadioCardImageProps) => {
         >
             <input {...getInputProps()} />
             <Box {...getRadioProps()} w="full" maxW="200px" position="relative">
-                <NextImage src={props.src(state.isChecked)} alt={props.label} layout="responsive" />
+                <NextImage src={props.src(state.isChecked)} alt={props.label} loading="eager" layout="responsive" />
             </Box>
             <chakra.span mt="8px" textAlign="center" color={state.isChecked ? 'indigo.600' : 'slate.500'}>
                 {props.label}
