@@ -41,7 +41,7 @@ export type GetProductResponse = {
 export const useGetProducts = (body: GetProductsBody, enabled: boolean) => {
     const transform = (item: ProductResponse) => ({
         name: item.name,
-        slug: item.slug,
+        slug: `https://vuanem.com/${item.slug}.html`,
         imageSrc: item.images.replace('public', 'https://vuanem.com/storage'),
     });
 

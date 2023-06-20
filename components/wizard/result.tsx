@@ -5,6 +5,8 @@ import {
     Flex,
     Icon,
     Image,
+    LinkBox,
+    LinkOverlay,
     Popover,
     PopoverBody,
     PopoverContent,
@@ -93,7 +95,8 @@ const WizardResult = ({ products }: { products: Product[] }) => {
     return (
         <SimpleGrid mt="24px" columns={{ base: 2, md: 3 }} spacing="20px">
             {products.map((item) => (
-                <Flex
+                <LinkBox
+                    as={Flex}
                     key={item.slug}
                     flexDirection="column"
                     alignItems="stretch"
@@ -102,8 +105,10 @@ const WizardResult = ({ products }: { products: Product[] }) => {
                     borderColor="indigo.600"
                 >
                     <Image src={item.imageSrc} alt={item.name} />
-                    <Text p="6px">{item.name}</Text>
-                </Flex>
+                    <LinkOverlay isExternal href={item.slug}>
+                        <Text p="6px">{item.name}</Text>
+                    </LinkOverlay>
+                </LinkBox>
             ))}
         </SimpleGrid>
     );
