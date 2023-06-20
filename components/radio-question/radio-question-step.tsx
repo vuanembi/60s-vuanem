@@ -42,6 +42,7 @@ export const RadioQuestionStep = <T extends RadioItemProps>(props: RadioQuestion
 
     useEffect(() => {
         onChange(defaultValue);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

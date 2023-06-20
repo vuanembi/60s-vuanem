@@ -31,6 +31,7 @@ export const QuestionSlider = ({ control, name, question }: QuestionSliderProps)
 
     useEffect(() => {
         onChange(0);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const labelStyles = { mt: '16px', fontSize: '14px' };
