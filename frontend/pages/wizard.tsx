@@ -3,15 +3,7 @@ import { joiResolver } from '@hookform/resolvers/joi';
 import { Wizard as ReactWizard } from 'react-use-wizard';
 import Joi from 'joi';
 
-import {
-    useQuestion1,
-    useQuestion2,
-    useQuestion3s,
-    useQuestion4,
-    useQuestion5,
-    useQuestion6,
-    useQuestion7,
-} from '../hooks/use-questions';
+import { Question1, Question2, Question3s, Question4, Question5, Question6, Question7 } from '../data/questions';
 import { GetProductsFormValues, useGetProducts } from '../hooks/use-wizard-form';
 import { RadioCardText } from '../components/radio-question/radio-card-text';
 import { RadioCardImage } from '../components/radio-question/radio-card-image';
@@ -38,24 +30,24 @@ const Wizard = () => {
     return (
         <form onSubmit={(e) => e.preventDefault()}>
             <ReactWizard header={<WizardProgress />}>
-                <RadioQuestionStep {...useQuestion1()} control={control} columns={1} Item={RadioCardText} />
-                <RadioQuestionStep {...useQuestion2()} control={control} columns={1} Item={RadioCardImage} />
-                <SliderQuestionStep control={control} {...useQuestion3s()} />
+                <RadioQuestionStep {...Question1} control={control} columns={1} Item={RadioCardText} />
+                <RadioQuestionStep {...Question2} control={control} columns={1} Item={RadioCardImage} />
+                <SliderQuestionStep control={control} {...Question3s} />
                 <RadioQuestionStep
-                    {...useQuestion4()}
+                    {...Question4}
                     control={control}
                     columns={{ base: 2, md: 3 }}
                     Item={RadioCardImage}
                 />
-                <RadioQuestionStep {...useQuestion5()} control={control} columns={1} Item={RadioCardText} />
+                <RadioQuestionStep {...Question5} control={control} columns={1} Item={RadioCardText} />
                 <RadioQuestionStep
-                    {...useQuestion6()}
+                    {...Question6}
                     control={control}
                     columns={{ base: 2, md: 4 }}
                     Item={RadioCardImage}
                 />
                 <RadioQuestionStep
-                    {...useQuestion7()}
+                    {...Question7}
                     control={control}
                     columns={{ base: 2, md: 4 }}
                     Item={RadioCardImage}

@@ -20,15 +20,15 @@ import {
 import { HiOutlineChevronDown } from 'react-icons/hi';
 
 import {
-    UseRadioQuestion,
-    useQuestion1,
-    useQuestion2,
-    useQuestion3s,
-    useQuestion4,
-    useQuestion5,
-    useQuestion6,
-    useQuestion7,
-} from '../../hooks/use-questions';
+    RadioQuestion,
+    Question1,
+    Question2,
+    Question3s,
+    Question4,
+    Question5,
+    Question6,
+    Question7,
+} from '../../data/questions';
 import { GetProductsFormValues, Product, useGetProducts } from '../../hooks/use-wizard-form';
 import { useAnimationOnMount } from '../../hooks/use-animation-on-mount';
 import { RadioCardTextProps } from '../radio-question/radio-card-text';
@@ -38,17 +38,17 @@ type WizardAnswerProps = {
 };
 
 const WizardAnswer = ({ values }: WizardAnswerProps) => {
-    type Question = ReturnType<UseRadioQuestion<RadioCardTextProps>>;
+    type Question = RadioQuestion<RadioCardTextProps>;
 
     const questions = [
-        useQuestion1(),
-        useQuestion2(),
-        ...useQuestion3s().questions,
-        useQuestion4(),
-        useQuestion5(),
-        useQuestion6(),
-        useQuestion7(),
-    ] as ReturnType<UseRadioQuestion<RadioCardTextProps>>[];
+        Question1,
+        Question2,
+        ...Question3s.questions,
+        Question4,
+        Question5,
+        Question6,
+        Question7,
+    ] as RadioQuestion<RadioCardTextProps>[];
 
     const answers = Object.entries(values).map(([id, answer], i) => {
         const question = questions.find(({ name }) => name === id) as Question;

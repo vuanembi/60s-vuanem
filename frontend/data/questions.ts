@@ -1,4 +1,4 @@
-import { GetProductsFormValues } from './use-wizard-form';
+import { GetProductsFormValues } from '../hooks/use-wizard-form';
 import { RadioCardTextProps } from '../components/radio-question/radio-card-text';
 import { RadioCardImageProps } from '../components/radio-question/radio-card-image';
 import { SliderQuestionStepProps } from '../components/slider-question/slider-question-step';
@@ -37,13 +37,13 @@ import Q7_LATEX_CHECKED from '../public/q7/latex-checked.png';
 import Q7_SPRING_CHECKED from '../public/q7/spring-checked.png';
 import Q7_SPRING from '../public/q7/spring.png';
 
-export type UseRadioQuestion<T> = () => {
+export type RadioQuestion<T> = {
     name: keyof GetProductsFormValues;
     question: string;
     options: T[];
 };
 
-export const useQuestion1: UseRadioQuestion<RadioCardTextProps> = () => ({
+export const Question1: RadioQuestion<RadioCardTextProps> = {
     name: 'question1',
     question: 'Nhu cầu của bạn?',
     options: [
@@ -53,9 +53,9 @@ export const useQuestion1: UseRadioQuestion<RadioCardTextProps> = () => ({
         { label: 'Mua tặng cha mẹ & người thân', value: '4' },
         { label: 'Cho con ngủ riêng', value: '5' },
     ],
-});
+};
 
-export const useQuestion2: UseRadioQuestion<RadioCardImageProps> = () => ({
+export const Question2: RadioQuestion<RadioCardImageProps> = {
     name: 'question2',
     question: 'Tư thế nằm của bạn?',
     options: [
@@ -80,9 +80,9 @@ export const useQuestion2: UseRadioQuestion<RadioCardImageProps> = () => ({
             src: { normal: Q2_ANY, checked: Q2_ANY_CHECKED },
         },
     ],
-});
+};
 
-export const useQuestion4: UseRadioQuestion<RadioCardImageProps> = () => ({
+export const Question4: RadioQuestion<RadioCardImageProps> = {
     name: 'question4',
     question: 'Kích cỡ sản phẩm mong muốn?',
     options: [
@@ -102,9 +102,9 @@ export const useQuestion4: UseRadioQuestion<RadioCardImageProps> = () => ({
             src: { normal: Q4_TRIPLE, checked: Q4_TRIPLE_CHECKED },
         },
     ],
-});
+};
 
-export const useQuestion5: UseRadioQuestion<RadioCardTextProps> = () => ({
+export const Question5: RadioQuestion<RadioCardTextProps> = {
     name: 'question5',
     question: 'Độ cao của gối bạn sử dụng?',
     options: [
@@ -112,9 +112,9 @@ export const useQuestion5: UseRadioQuestion<RadioCardTextProps> = () => ({
         { label: 'Gối thấp', value: '2' },
         { label: 'Linh hoạt', value: '3' },
     ],
-});
+};
 
-export const useQuestion6: UseRadioQuestion<RadioCardImageProps> = () => ({
+export const Question6: RadioQuestion<RadioCardImageProps> = {
     name: 'question6',
     question: 'Độ cứng mềm mong muốn?',
     options: [
@@ -139,9 +139,9 @@ export const useQuestion6: UseRadioQuestion<RadioCardImageProps> = () => ({
             src: { normal: Q6_ANY, checked: Q6_ANY_CHECKED },
         },
     ],
-});
+};
 
-export const useQuestion7: UseRadioQuestion<RadioCardImageProps> = () => ({
+export const Question7: RadioQuestion<RadioCardImageProps> = {
     name: 'question7',
     question: 'Loại / Chất liệu mong muốn?',
     options: [
@@ -166,11 +166,11 @@ export const useQuestion7: UseRadioQuestion<RadioCardImageProps> = () => ({
             src: { normal: Q7_COMPRESS, checked: Q7_COMPRESS_CHECKED },
         },
     ],
-});
+};
 
-type UseSliderQuestions = () => Omit<SliderQuestionStepProps, 'control'>;
+type SliderQuestions = Omit<SliderQuestionStepProps, 'control'>;
 
-export const useQuestion3s: UseSliderQuestions = () => ({
+export const Question3s: SliderQuestions = {
     question: 'Bệnh lý liên quan của bạn?',
     questions: [
         {
@@ -190,4 +190,4 @@ export const useQuestion3s: UseSliderQuestions = () => ({
             question: 'Bạn bị đau mỏi vai gáy?',
         },
     ],
-});
+};
