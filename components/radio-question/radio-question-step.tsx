@@ -42,7 +42,7 @@ export const RadioQuestionStep = <T extends RadioItemProps>(props: RadioQuestion
 
     useEffect(() => {
         onChange(defaultValue);
-    }, [onChange, defaultValue]);
+    }, []);
 
     return (
         <WizardPaginator question={question}>

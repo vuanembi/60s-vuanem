@@ -31,7 +31,7 @@ export const QuestionSlider = ({ control, name, question }: QuestionSliderProps)
 
     useEffect(() => {
         onChange(0);
-    }, [onChange]);
+    }, []);
 
     const labelStyles = { mt: '16px', fontSize: '14px' };
 
