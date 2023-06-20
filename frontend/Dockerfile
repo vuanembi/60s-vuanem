@@ -1,27 +1,21 @@
-FROM node:18-alpine AS deps
-RUN apk add --no-cache libc6-compat
+FROM node:18-bookworm-slim AS deps
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
 
-FROM node:18-alpine AS builder
+FROM node:18-bookworm-slim AS builder
 WORKDIR /app
-COPY . .
 COPY --from=deps /app/node_modules ./node_modules
+COPY . .
 RUN npm run build
 
-FROM node:18-alpine AS runner
+FROM node:18-bookworm-slim AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
 
-RUN addgroup -g 1001 -S nodejs
-RUN adduser -S nextjs -u 1001
-
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-
-USER nextjs
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
 
 ENV NEXT_TELEMETRY_DISABLED 1
 

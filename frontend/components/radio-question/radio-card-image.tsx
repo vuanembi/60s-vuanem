@@ -10,7 +10,12 @@ export type RadioCardImageProps = {
 export const RadioCardImage = (props: RadioCardImageProps) => {
     const { state, getInputProps, getRootProps, getRadioProps, getLabelProps } = useRadio(props);
 
-    const imageStyles = { alt: props.label, loading: 'eager' as const, layout: 'responsive' };
+    const imageStyles = {
+        alt: props.label,
+        layout: 'responsive',
+        priority: true,
+        placeholder: 'blur' as const,
+    };
 
     return (
         <Flex
