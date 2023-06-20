@@ -1,0 +1,9 @@
+services:
+  frontend:
+    container_name: frontend
+    image: 60s-vuanem
+    build:
+      context: .
+    restart: unless-stopped
+    ports:
+      - 8080:3000
