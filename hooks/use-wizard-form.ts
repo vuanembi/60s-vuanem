@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 
@@ -16,8 +15,8 @@ export type GetProductsFormValues = {
 };
 
 export type GetProductsBody = {
-    cat: string;
-    size: string;
+    cau_6: string;
+    cau_7: string;
 };
 
 export type Product = {
@@ -26,16 +25,30 @@ export type Product = {
     imageSrc: string;
 };
 
+type ProductResponse = {
+    name: string;
+    slug: string;
+    images: string;
+};
+
 export type GetProductResponse = {
     data: {
-        name: string;
-        slug: string;
-        image_path: string;
-    }[];
+        mattress: ProductResponse[];
+        accessory: ProductResponse[];
+    };
 };
 
 export const useGetProducts = (body: GetProductsBody, enabled: boolean) => {
-    return useQuery<Product[]>({
+    const transform = (item: ProductResponse) => {
+        console.log({ item });
+        return {
+            name: item.name,
+            slug: item.slug,
+            imageSrc: item.images.replace('public', 'https://vuanem.com/storage'),
+        };
+    };
+
+    return useQuery<{ mattress: Product[]; accessory: Product[] }>({
         queryKey: ['products', body],
         queryFn: async () => {
             return axios
@@ -45,20 +58,20 @@ export const useGetProducts = (body: GetProductsBody, enabled: boolean) => {
                     data: body,
                 })
                 .then((response) => response.data)
-                .then((data) => {
-                    return data.data
-                        .map((item) => ({
-                            name: item.name,
-                            slug: item.slug,
-                            imageSrc: item.image_path.replace(
-                                'public',
-                                'https://vuanem.com/storage',
-                            ),
-                        }))
-                        .slice(0, 6);
+                .then(({ data }) => {
+                    console.log({
+                        data,
+                        x: {
+                            mattress: data.mattress.map(transform),
+                            accessory: data.accessory.map(transform),
+                        },
+                    });
+                    return {
+                        mattress: data.mattress.map(transform),
+                        accessory: data.accessory.map(transform),
+                    };
                 });
         },
-        staleTime: Infinity,
         refetchIntervalInBackground: false,
         enabled,
     });

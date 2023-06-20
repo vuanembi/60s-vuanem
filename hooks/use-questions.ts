@@ -88,17 +88,17 @@ export const useQuestion4: UseRadioQuestion<RadioCardImageProps> = () => ({
     options: [
         {
             label: '1 người',
-            value: '225',
+            value: '1',
             src: (isChecked) => (isChecked ? Q4_SINGLE_CHECKED : Q4_SINGLE),
         },
         {
             label: '2 người',
-            value: '220',
+            value: '2',
             src: (isChecked) => (isChecked ? Q4_DOUBLE_CHECKED : Q4_DOUBLE),
         },
         {
             label: '3 người trở lên',
-            value: '227',
+            value: '3',
             src: (isChecked) => (isChecked ? Q4_TRIPLE_CHECKED : Q4_TRIPLE),
         },
     ],
@@ -120,22 +120,22 @@ export const useQuestion6: UseRadioQuestion<RadioCardImageProps> = () => ({
     options: [
         {
             label: 'Mềm mại',
-            value: '1',
+            value: 'Mềm mại',
             src: (isChecked) => (isChecked ? Q6_SOFT_CHECKED : Q6_SOFT),
         },
         {
             label: 'Trung bình',
-            value: '2',
+            value: 'Trung bình',
             src: (isChecked) => (isChecked ? Q6_MEDIUM_CHECKED : Q6_MEDIUM),
         },
         {
             label: 'Cứng cáp',
-            value: '3',
+            value: 'Cứng cáp',
             src: (isChecked) => (isChecked ? Q6_FIRM_CHECKED : Q6_FIRM),
         },
         {
             label: 'Tôi không rõ',
-            value: '4',
+            value: 'Tôi không rõ',
             src: (isChecked) => (isChecked ? Q6_ANY_CHECKED : Q6_ANY),
         },
     ],
@@ -147,22 +147,22 @@ export const useQuestion7: UseRadioQuestion<RadioCardImageProps> = () => ({
     options: [
         {
             label: 'Lò xo',
-            value: '31',
+            value: 'Lò xo',
             src: (isChecked) => (isChecked ? Q7_SPRING_CHECKED : Q7_SPRING),
         },
         {
             label: 'Foam',
-            value: '28',
+            value: 'Foam',
             src: (isChecked) => (isChecked ? Q7_FOAM_CHECKED : Q7_FOAM),
         },
         {
             label: 'Cao su',
-            value: '34',
+            value: 'Cao su',
             src: (isChecked) => (isChecked ? Q7_LATEX_CHECKED : Q7_LATEX),
         },
         {
-            label: 'Bông ép',
-            value: '39',
+            label: 'Không rõ',
+            value: 'Không rõ',
             src: (isChecked) => (isChecked ? Q7_COMPRESS_CHECKED : Q7_COMPRESS),
         },
     ],

@@ -18,11 +18,11 @@ import { RadioCardImage } from '../components/radio-question/radio-card-image';
 import { RadioQuestionStep } from '../components/radio-question/radio-question-step';
 import { SliderQuestionStep } from '../components/slider-question/slider-question-step';
 import { WizardProgress } from '../components/wizard/progress';
-import { WizardResult } from '../components/wizard/result';
+import { WizardResults } from '../components/wizard/result';
 
 const querySchema = Joi.object({
-    question4: Joi.string().required(),
     question6: Joi.string().required(),
+    question7: Joi.string().required(),
 })
     .required()
     .options({ stripUnknown: true });
@@ -34,7 +34,7 @@ const Wizard = () => {
     });
 
     const useQueryResults = useGetProducts(
-        { cat: watch().question6, size: watch().question4 },
+        { cau_6: watch().question6, cau_7: watch().question7 },
         formState.isValid,
     );
 
@@ -78,7 +78,7 @@ const Wizard = () => {
                     columns={{ base: 2, md: 4 }}
                     Item={RadioCardImage}
                 />
-                <WizardResult answers={watch()} results={useQueryResults} />
+                <WizardResults answers={watch()} results={useQueryResults} />
             </ReactWizard>
         </form>
     );

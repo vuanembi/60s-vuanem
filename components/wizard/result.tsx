@@ -1,4 +1,5 @@
 import {
+    Box,
     Button,
     Divider,
     Flex,
@@ -26,7 +27,7 @@ import {
     useQuestion7,
 } from '../../hooks/use-questions';
 import { RadioCardTextProps } from '../radio-question/radio-card-text';
-import { GetProductsFormValues, useGetProducts } from '../../hooks/use-wizard-form';
+import { GetProductsFormValues, Product, useGetProducts } from '../../hooks/use-wizard-form';
 
 type WizardAnswerProps = {
     values: GetProductsFormValues;
@@ -88,31 +89,43 @@ type WizardResultProps = {
     results: ReturnType<typeof useGetProducts>;
 };
 
-export const WizardResult = ({ answers, results }: WizardResultProps) => {
-    const { data = [] } = results;
+const WizardResult = ({ products }: { products: Product[] }) => {
+    return (
+        <SimpleGrid mt="24px" columns={{ base: 2, md: 3 }} spacing="20px">
+            {products.map((item) => (
+                <Flex
+                    key={item.slug}
+                    flexDirection="column"
+                    alignItems="stretch"
+                    borderRadius="6px"
+                    borderWidth="1px"
+                    borderColor="indigo.600"
+                >
+                    <Image src={item.imageSrc} alt={item.name} />
+                    <Text p="6px">{item.name}</Text>
+                </Flex>
+            ))}
+        </SimpleGrid>
+    );
+};
+
+export const WizardResults = ({ answers, results }: WizardResultProps) => {
+    const { data = { mattress: [], accessory: [] } } = results;
 
     return (
         <Flex flexDirection="column" alignItems="stretch">
-            <Flex justifyContent="space-between">
-                <Text fontWeight="bold">Kết quả phù hợp</Text>
-                <WizardAnswer values={answers} />
-            </Flex>
-            {data && (
-                <SimpleGrid mt="24px" columns={{ base: 2, md: 3 }} spacing="20px">
-                    {data.map((item) => (
-                        <Flex
-                            key={item.slug}
-                            flexDirection="column"
-                            alignItems="stretch"
-                            borderRadius="6px"
-                            borderWidth="1px"
-                            borderColor="indigo.600"
-                        >
-                            <Image src={item.imageSrc} alt={item.name} />
-                            <Text p="6px">{item.name}</Text>
-                        </Flex>
-                    ))}
-                </SimpleGrid>
+            <Box>
+                <Flex justifyContent="space-between">
+                    <Text fontWeight="bold">Kết quả phù hợp</Text>
+                    <WizardAnswer values={answers} />
+                </Flex>
+                <WizardResult products={data.mattress} />
+            </Box>
+            {data.accessory.length > 0 && (
+                <Box mt="24px">
+                    <Text fontWeight="bold">Sản phẩm thích hợp đi kèm</Text>
+                    <WizardResult products={data.accessory} />
+                </Box>
             )}
         </Flex>
     );

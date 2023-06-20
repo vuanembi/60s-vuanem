@@ -11,7 +11,7 @@ export const Layout = ({ children }: PropsWithChildren) => {
             alignItems="stretch"
             maxW="container.md"
             px="32px"
-            pt="16px"
+            py="16px"
             minH="100vh"
         >
             <Header />
