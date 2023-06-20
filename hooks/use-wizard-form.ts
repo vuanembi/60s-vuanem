@@ -60,6 +60,8 @@ export const useGetProducts = (body: GetProductsBody, enabled: boolean) => {
                     accessory: data.accessory.map(transform),
                 }));
         },
+        staleTime: Infinity,
+        refetchInterval: false,
         refetchIntervalInBackground: false,
         enabled,
     });
