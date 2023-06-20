@@ -13,6 +13,7 @@ import {
     PopoverTrigger,
     Portal,
     SimpleGrid,
+    SlideFade,
     Text,
     VStack,
 } from '@chakra-ui/react';
@@ -28,8 +29,9 @@ import {
     useQuestion6,
     useQuestion7,
 } from '../../hooks/use-questions';
-import { RadioCardTextProps } from '../radio-question/radio-card-text';
 import { GetProductsFormValues, Product, useGetProducts } from '../../hooks/use-wizard-form';
+import { useAnimationOnMount } from '../../hooks/use-animation-on-mount';
+import { RadioCardTextProps } from '../radio-question/radio-card-text';
 
 type WizardAnswerProps = {
     values: GetProductsFormValues;
@@ -92,24 +94,30 @@ type WizardResultProps = {
 };
 
 const WizardResult = ({ products }: { products: Product[] }) => {
+    const { isOpen } = useAnimationOnMount();
+
     return (
         <SimpleGrid mt="24px" columns={{ base: 2, md: 3 }} spacing="20px">
-            {products.map((item) => (
-                <LinkBox
-                    as={Flex}
-                    key={item.slug}
-                    flexDirection="column"
-                    alignItems="stretch"
-                    borderRadius="6px"
-                    borderWidth="1px"
-                    borderColor="indigo.600"
-                >
-                    <Image src={item.imageSrc} alt={item.name} />
-                    <LinkOverlay isExternal href={item.slug}>
-                        <Text p="6px">{item.name}</Text>
-                    </LinkOverlay>
-                </LinkBox>
-            ))}
+            {products.map((item) => {
+                return (
+                    <LinkBox
+                        as={Flex}
+                        key={item.slug}
+                        flexDirection="column"
+                        alignItems="stretch"
+                        borderRadius="6px"
+                        borderWidth="1px"
+                        borderColor="indigo.600"
+                    >
+                        <SlideFade in={isOpen}>
+                            <Image src={item.imageSrc} alt={item.name} />
+                            <LinkOverlay isExternal href={item.slug}>
+                                <Text p="6px">{item.name}</Text>
+                            </LinkOverlay>
+                        </SlideFade>
+                    </LinkBox>
+                );
+            })}
         </SimpleGrid>
     );
 };
