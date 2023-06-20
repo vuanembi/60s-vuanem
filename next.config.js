@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: 'standalone',
     reactStrictMode: true,
+    output: 'standalone',
     images: {
-        unoptimized: true,
+        // unoptimized: true,
         remotePatterns: [
             {
                 protocol: 'https',

@@ -1,31 +1,23 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { useController, Control } from 'react-hook-form';
 import { Box, Slider, SliderTrack, SliderFilledTrack, SliderThumb, SliderMark, Text } from '@chakra-ui/react';
 
-import { GetProductsFormValues } from '../../hooks/use-wizard-form';
-
-export type QuestionSliderProps = {
-    control: Control<GetProductsFormValues>;
-    name: keyof GetProductsFormValues;
-    question: string;
+export type SliderQuestionProps = {
+    control: Control<any>;
+    name: string;
+    prompt: string;
 };
 
-export const QuestionSlider = ({ control, name, question }: QuestionSliderProps) => {
+export const SliderQuestion = ({ control, name, prompt: question }: SliderQuestionProps) => {
     const { field } = useController({ control, name });
 
     const onChange = useCallback(
         (value: number) => {
             field.onBlur();
-            field.onChange(value.toString());
+            field.onChange(value);
         },
         [field],
     );
-
-    useEffect(() => {
-        onChange(0);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
     const labelStyles = { mt: '16px', fontSize: '14px' };
 
     return (

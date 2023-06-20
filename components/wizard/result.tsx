@@ -1,94 +1,13 @@
-import {
-    Box,
-    Button,
-    Divider,
-    Flex,
-    Icon,
-    Image,
-    LinkBox,
-    LinkOverlay,
-    Popover,
-    PopoverBody,
-    PopoverContent,
-    PopoverTrigger,
-    Portal,
-    SimpleGrid,
-    SlideFade,
-    Text,
-    VStack,
-} from '@chakra-ui/react';
-import { HiOutlineChevronDown } from 'react-icons/hi';
+import { Flex, Image, LinkBox, LinkOverlay, SimpleGrid, SlideFade, Text } from '@chakra-ui/react';
 
-import {
-    RadioQuestion,
-    Question1,
-    Question2,
-    Question3s,
-    Question4,
-    Question5,
-    Question6,
-    Question7,
-} from '../../data/questions';
-import { GetProductsFormValues, Product, useGetProducts } from '../../hooks/use-wizard-form';
+import { Product } from '../../hooks/use-wizard-form';
 import { useAnimationOnMount } from '../../hooks/use-animation-on-mount';
-import { RadioCardTextProps } from '../radio-question/radio-card-text';
-
-type WizardAnswerProps = {
-    values: GetProductsFormValues;
-};
-
-const WizardAnswer = ({ values }: WizardAnswerProps) => {
-    type Question = RadioQuestion<RadioCardTextProps>;
-
-    const questions = [
-        Question1,
-        Question2,
-        ...Question3s.questions,
-        Question4,
-        Question5,
-        Question6,
-        Question7,
-    ] as RadioQuestion<RadioCardTextProps>[];
-
-    const answers = Object.entries(values).map(([id, answer], i) => {
-        const question = questions.find(({ name }) => name === id) as Question;
-        const answer_ = question.options
-            ? (question.options.find((x) => x.value === answer) as RadioCardTextProps).label
-            : answer;
-        return { question: question.question, answer: answer_ };
-    });
-
-    return (
-        <Popover placement="bottom-end">
-            <PopoverTrigger>
-                <Button variant="link" rightIcon={<Icon as={HiOutlineChevronDown} />}>
-                    Xem lại lựa chọn
-                </Button>
-            </PopoverTrigger>
-            <Portal>
-                <PopoverContent w="100%" borderColor="indigo.600" boxShadow="base">
-                    <PopoverBody>
-                        <VStack p="16px" spacing="8px" alignItems="stretch" divider={<Divider variant="dashed" />}>
-                            {answers.map(({ question, answer }) => (
-                                <Flex key={question} flexDirection="column" alignItems="stretch">
-                                    <Text color="slate.500">{question}</Text>
-                                    <Text fontWeight="bold">{answer}</Text>
-                                </Flex>
-                            ))}
-                        </VStack>
-                    </PopoverBody>
-                </PopoverContent>
-            </Portal>
-        </Popover>
-    );
-};
 
 type WizardResultProps = {
-    answers: GetProductsFormValues;
-    results: ReturnType<typeof useGetProducts>;
+    products: Product[];
 };
 
-const WizardResult = ({ products }: { products: Product[] }) => {
+export const WizardResult = ({ products }: WizardResultProps) => {
     const { isOpen } = useAnimationOnMount();
 
     return (
@@ -114,27 +33,5 @@ const WizardResult = ({ products }: { products: Product[] }) => {
                 );
             })}
         </SimpleGrid>
-    );
-};
-
-export const WizardResults = ({ answers, results }: WizardResultProps) => {
-    const { data = { mattress: [], accessory: [] } } = results;
-
-    return (
-        <Flex flexDirection="column" alignItems="stretch">
-            <Box>
-                <Flex justifyContent="space-between">
-                    <Text fontWeight="bold">Kết quả phù hợp</Text>
-                    <WizardAnswer values={answers} />
-                </Flex>
-                <WizardResult products={data.mattress} />
-            </Box>
-            {data.accessory.length > 0 && (
-                <Box mt="24px">
-                    <Text fontWeight="bold">Sản phẩm thích hợp đi kèm</Text>
-                    <WizardResult products={data.accessory} />
-                </Box>
-            )}
-        </Flex>
     );
 };
