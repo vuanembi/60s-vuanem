@@ -39,14 +39,11 @@ export type GetProductResponse = {
 };
 
 export const useGetProducts = (body: GetProductsBody, enabled: boolean) => {
-    const transform = (item: ProductResponse) => {
-        console.log({ item });
-        return {
-            name: item.name,
-            slug: item.slug,
-            imageSrc: item.images.replace('public', 'https://vuanem.com/storage'),
-        };
-    };
+    const transform = (item: ProductResponse) => ({
+        name: item.name,
+        slug: item.slug,
+        imageSrc: item.images.replace('public', 'https://vuanem.com/storage'),
+    });
 
     return useQuery<{ mattress: Product[]; accessory: Product[] }>({
         queryKey: ['products', body],
@@ -58,19 +55,10 @@ export const useGetProducts = (body: GetProductsBody, enabled: boolean) => {
                     data: body,
                 })
                 .then((response) => response.data)
-                .then(({ data }) => {
-                    console.log({
-                        data,
-                        x: {
-                            mattress: data.mattress.map(transform),
-                            accessory: data.accessory.map(transform),
-                        },
-                    });
-                    return {
-                        mattress: data.mattress.map(transform),
-                        accessory: data.accessory.map(transform),
-                    };
-                });
+                .then(({ data }) => ({
+                    mattress: data.mattress.map(transform),
+                    accessory: data.accessory.map(transform),
+                }));
         },
         refetchIntervalInBackground: false,
         enabled,
