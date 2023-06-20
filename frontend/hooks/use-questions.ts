@@ -62,22 +62,22 @@ export const useQuestion2: UseRadioQuestion<RadioCardImageProps> = () => ({
         {
             label: 'Nằm nghiêng',
             value: '1',
-            src: (isChecked) => (isChecked ? Q2_SIDE_CHECKED : Q2_SIDE),
+            src: { normal: Q2_SIDE, checked: Q2_SIDE_CHECKED },
         },
         {
             label: 'Nằm sấp',
             value: '2',
-            src: (isChecked) => (isChecked ? Q2_FACEDOWN_CHECKED : Q2_FACEDOWN),
+            src: { normal: Q2_FACEDOWN, checked: Q2_FACEDOWN_CHECKED },
         },
         {
             label: 'Nằm ngửa',
             value: '3',
-            src: (isChecked) => (isChecked ? Q2_BACK_CHECKED : Q2_BACK),
+            src: { normal: Q2_BACK, checked: Q2_BACK_CHECKED },
         },
         {
             label: 'Nằm mọi tư thế',
             value: '4',
-            src: (isChecked) => (isChecked ? Q2_ANY_CHECKED : Q2_ANY),
+            src: { normal: Q2_ANY, checked: Q2_ANY_CHECKED },
         },
     ],
 });
@@ -89,17 +89,17 @@ export const useQuestion4: UseRadioQuestion<RadioCardImageProps> = () => ({
         {
             label: '1 người',
             value: '1',
-            src: (isChecked) => (isChecked ? Q4_SINGLE_CHECKED : Q4_SINGLE),
+            src: { normal: Q4_SINGLE, checked: Q4_SINGLE_CHECKED },
         },
         {
             label: '2 người',
             value: '2',
-            src: (isChecked) => (isChecked ? Q4_DOUBLE_CHECKED : Q4_DOUBLE),
+            src: { normal: Q4_DOUBLE, checked: Q4_DOUBLE_CHECKED },
         },
         {
             label: '3 người trở lên',
             value: '3',
-            src: (isChecked) => (isChecked ? Q4_TRIPLE_CHECKED : Q4_TRIPLE),
+            src: { normal: Q4_TRIPLE, checked: Q4_TRIPLE_CHECKED },
         },
     ],
 });
@@ -121,22 +121,22 @@ export const useQuestion6: UseRadioQuestion<RadioCardImageProps> = () => ({
         {
             label: 'Mềm mại',
             value: 'Mềm mại',
-            src: (isChecked) => (isChecked ? Q6_SOFT_CHECKED : Q6_SOFT),
+            src: { normal: Q6_SOFT, checked: Q6_SOFT_CHECKED },
         },
         {
             label: 'Trung bình',
             value: 'Trung bình',
-            src: (isChecked) => (isChecked ? Q6_MEDIUM_CHECKED : Q6_MEDIUM),
+            src: { normal: Q6_MEDIUM, checked: Q6_MEDIUM_CHECKED },
         },
         {
             label: 'Cứng cáp',
             value: 'Cứng cáp',
-            src: (isChecked) => (isChecked ? Q6_FIRM_CHECKED : Q6_FIRM),
+            src: { normal: Q6_FIRM, checked: Q6_FIRM_CHECKED },
         },
         {
             label: 'Tôi không rõ',
             value: 'Tôi không rõ',
-            src: (isChecked) => (isChecked ? Q6_ANY_CHECKED : Q6_ANY),
+            src: { normal: Q6_ANY, checked: Q6_ANY_CHECKED },
         },
     ],
 });
@@ -148,22 +148,22 @@ export const useQuestion7: UseRadioQuestion<RadioCardImageProps> = () => ({
         {
             label: 'Lò xo',
             value: 'Lò xo',
-            src: (isChecked) => (isChecked ? Q7_SPRING_CHECKED : Q7_SPRING),
+            src: { normal: Q7_SPRING, checked: Q7_SPRING_CHECKED },
         },
         {
             label: 'Foam',
             value: 'Foam',
-            src: (isChecked) => (isChecked ? Q7_FOAM_CHECKED : Q7_FOAM),
+            src: { normal: Q7_FOAM, checked: Q7_FOAM_CHECKED },
         },
         {
             label: 'Cao su',
             value: 'Cao su',
-            src: (isChecked) => (isChecked ? Q7_LATEX_CHECKED : Q7_LATEX),
+            src: { normal: Q7_LATEX, checked: Q7_LATEX_CHECKED },
         },
         {
             label: 'Không rõ',
             value: 'Không rõ',
-            src: (isChecked) => (isChecked ? Q7_COMPRESS_CHECKED : Q7_COMPRESS),
+            src: { normal: Q7_COMPRESS, checked: Q7_COMPRESS_CHECKED },
         },
     ],
 });

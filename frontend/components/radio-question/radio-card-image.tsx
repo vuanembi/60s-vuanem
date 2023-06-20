@@ -4,11 +4,13 @@ import { Box, Flex, useRadio, chakra } from '@chakra-ui/react';
 export type RadioCardImageProps = {
     label: string;
     value: string;
-    src: (isChecked: boolean) => any;
+    src: { normal: any; checked: any };
 };
 
 export const RadioCardImage = (props: RadioCardImageProps) => {
     const { state, getInputProps, getRootProps, getRadioProps, getLabelProps } = useRadio(props);
+
+    const imageStyles = { alt: props.label, loading: 'eager' as const, layout: 'responsive' };
 
     return (
         <Flex
@@ -21,7 +23,16 @@ export const RadioCardImage = (props: RadioCardImageProps) => {
         >
             <input {...getInputProps()} />
             <Box {...getRadioProps()} w="full" maxW="200px" position="relative">
-                <NextImage src={props.src(state.isChecked)} alt={props.label} loading="eager" layout="responsive" />
+                <NextImage
+                    src={props.src.normal}
+                    style={{ display: state.isChecked ? 'none' : 'block' }}
+                    {...imageStyles}
+                />
+                <NextImage
+                    src={props.src.checked}
+                    style={{ display: state.isChecked ? 'block' : 'none' }}
+                    {...imageStyles}
+                />
             </Box>
             <chakra.span mt="8px" textAlign="center" color={state.isChecked ? 'indigo.600' : 'slate.500'}>
                 {props.label}
