@@ -68,12 +68,7 @@ const WizardAnswer = ({ values }: WizardAnswerProps) => {
             <Portal>
                 <PopoverContent w="100%" borderColor="indigo.600" boxShadow="base">
                     <PopoverBody>
-                        <VStack
-                            p="16px"
-                            spacing="8px"
-                            alignItems="stretch"
-                            divider={<Divider variant="dashed" />}
-                        >
+                        <VStack p="16px" spacing="8px" alignItems="stretch" divider={<Divider variant="dashed" />}>
                             {answers.map(({ question, answer }) => (
                                 <Flex key={question} flexDirection="column" alignItems="stretch">
                                     <Text color="slate.500">{question}</Text>

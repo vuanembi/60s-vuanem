@@ -33,26 +33,13 @@ const Wizard = () => {
         resolver: joiResolver(querySchema),
     });
 
-    const useQueryResults = useGetProducts(
-        { cau_6: watch().question6, cau_7: watch().question7 },
-        formState.isValid,
-    );
+    const useQueryResults = useGetProducts({ cau_6: watch().question6, cau_7: watch().question7 }, formState.isValid);
 
     return (
         <form onSubmit={(e) => e.preventDefault()}>
             <ReactWizard header={<WizardProgress />}>
-                <RadioQuestionStep
-                    {...useQuestion1()}
-                    control={control}
-                    columns={1}
-                    Item={RadioCardText}
-                />
-                <RadioQuestionStep
-                    {...useQuestion2()}
-                    control={control}
-                    columns={1}
-                    Item={RadioCardImage}
-                />
+                <RadioQuestionStep {...useQuestion1()} control={control} columns={1} Item={RadioCardText} />
+                <RadioQuestionStep {...useQuestion2()} control={control} columns={1} Item={RadioCardImage} />
                 <SliderQuestionStep control={control} {...useQuestion3s()} />
                 <RadioQuestionStep
                     {...useQuestion4()}
@@ -60,12 +47,7 @@ const Wizard = () => {
                     columns={{ base: 2, md: 3 }}
                     Item={RadioCardImage}
                 />
-                <RadioQuestionStep
-                    {...useQuestion5()}
-                    control={control}
-                    columns={1}
-                    Item={RadioCardText}
-                />
+                <RadioQuestionStep {...useQuestion5()} control={control} columns={1} Item={RadioCardText} />
                 <RadioQuestionStep
                     {...useQuestion6()}
                     control={control}

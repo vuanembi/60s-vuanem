@@ -23,16 +23,10 @@ export const WizardPaginator = ({ question, children }: WizardPaginatorProps) =>
                 {children}
             </SlideFade>
             <Flex w="full" position="absolute" bottom="0px" justifyContent="space-between">
-                <Button
-                    variant="outline"
-                    onClick={() => (isFirstStep ? router.push('/') : previousStep())}
-                >
+                <Button variant="outline" onClick={() => (isFirstStep ? router.push('/') : previousStep())}>
                     Quay lại
                 </Button>
-                <Button
-                    type={activeStep === stepCount - 2 ? 'submit' : 'button'}
-                    onClick={nextStep}
-                >
+                <Button type={activeStep === stepCount - 2 ? 'submit' : 'button'} onClick={nextStep}>
                     Tiếp tục
                 </Button>
             </Flex>

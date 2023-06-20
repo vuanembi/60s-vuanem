@@ -1,14 +1,6 @@
 import { useCallback, useEffect } from 'react';
 import { useController, Control } from 'react-hook-form';
-import {
-    Box,
-    Slider,
-    SliderTrack,
-    SliderFilledTrack,
-    SliderThumb,
-    SliderMark,
-    Text,
-} from '@chakra-ui/react';
+import { Box, Slider, SliderTrack, SliderFilledTrack, SliderThumb, SliderMark, Text } from '@chakra-ui/react';
 
 import { GetProductsFormValues } from '../../hooks/use-wizard-form';
 
