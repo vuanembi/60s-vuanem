@@ -1,9 +1,9 @@
-import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { VStack } from '@chakra-ui/react';
 
 import { SliderQuestion } from '../components/slider-question/slider-question';
 import { WizardStep } from '../components/wizard/step';
+import { useWizardStep } from '../hooks/use-wizard-step';
 import { useWizardStore } from '../stores/wizard.store';
 
 type Step3Questions = {
@@ -13,9 +13,13 @@ type Step3Questions = {
     question34: number;
 };
 
-const Step3 = () => {
-    const router = useRouter();
+const options = {
+    step: 3,
+    previous: '/step-2',
+    next: '/step-4',
+};
 
+const Step3 = () => {
     const question31 = useWizardStore((state) => state.question31);
     const setQuestion31 = useWizardStore((state) => state.setQuestion31);
 
@@ -30,19 +34,21 @@ const Step3 = () => {
 
     const { control, handleSubmit } = useForm<Step3Questions>();
 
+    const getWizardStepProps = useWizardStep({
+        step: 3,
+        previous: '/step-2',
+        next: '/step-5',
+        callback: (value) => {
+            setQuestion31(value.question31);
+            setQuestion32(value.question32);
+            setQuestion33(value.question33);
+            setQuestion34(value.question34);
+        },
+        handleSubmit,
+    });
+
     return (
-        <WizardStep
-            prompt="Bệnh lý liên quan của bạn?"
-            step={3}
-            secondaryBtnOnClick={() => router.push('/step-2')}
-            onSubmit={handleSubmit((value) => {
-                setQuestion31(value.question31);
-                setQuestion32(value.question32);
-                setQuestion33(value.question33);
-                setQuestion34(value.question34);
-                router.push('/step-4');
-            })}
-        >
+        <WizardStep prompt="Bệnh lý liên quan của bạn?" {...getWizardStepProps()}>
             <VStack alignItems="stretch" spacing="20px">
                 <SliderQuestion control={control} {...question31.props} />
                 <SliderQuestion control={control} {...question32.props} />
