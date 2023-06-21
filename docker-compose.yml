@@ -20,7 +20,7 @@ services:
     container_name: frontend
     image: 60s-vuanem
     build:
-      context: ./frontend
+      context: .
     restart: unless-stopped
     networks:
       - 60s-vuanem
