@@ -38,7 +38,7 @@ const Step3 = () => {
     const getWizardStepProps = useWizardStep({
         step: 3,
         previous: '/step-2',
-        next: '/step-5',
+        next: '/step-4',
         callback: (value) => {
             setQuestion31(value.question31);
             setQuestion32(value.question32);
