@@ -33,7 +33,7 @@ export const WizardStep = (props: WizardStepProps) => {
                     bgColor="indigo.200"
                     borderRadius="80px"
                     sx={{
-                        '& > div': { 'background-color': indigo600 },
+                        '& > div': { 'background-color': 'indigo.600' },
                     }}
                     max={stepCount}
                     value={step}
