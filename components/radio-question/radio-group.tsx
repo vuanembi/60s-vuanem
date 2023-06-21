@@ -1,4 +1,4 @@
-import { FC, useCallback } from 'react';
+import { FC } from 'react';
 import { ResponsiveValue, SimpleGrid, useRadioGroup } from '@chakra-ui/react';
 import { useController, Control } from 'react-hook-form';
 
@@ -20,18 +20,13 @@ export const RadioGroupQuestionProps = <T extends RadioItemProps>(props: RadioGr
 
     const { field } = useController({ control, name });
 
-    const onChange = useCallback(
-        (value: any) => {
+    const { getRootProps, getRadioProps } = useRadioGroup({
+        name,
+        value: field.value,
+        onChange: (value) => {
             field.onChange(value);
             field.onBlur();
         },
-        [field],
-    );
-
-    const { getRootProps, getRadioProps } = useRadioGroup({
-        name,
-        onChange,
-        value: field.value,
     });
 
     return (

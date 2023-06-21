@@ -14,7 +14,9 @@ const Step2 = () => {
     const question = useWizardStore((state) => state.question2);
     const setQuestion = useWizardStore((state) => state.setQuestion2);
 
-    const { control, handleSubmit } = useForm<Step2Questions>();
+    const { control, handleSubmit } = useForm<Step2Questions>({
+        defaultValues: { question2: question.value },
+    });
 
     const getWizardStepProps = useWizardStep({
         step: 2,

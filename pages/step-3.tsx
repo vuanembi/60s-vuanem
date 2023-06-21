@@ -13,12 +13,6 @@ type Step3Questions = {
     question34: number;
 };
 
-const options = {
-    step: 3,
-    previous: '/step-2',
-    next: '/step-4',
-};
-
 const Step3 = () => {
     const question31 = useWizardStore((state) => state.question31);
     const setQuestion31 = useWizardStore((state) => state.setQuestion31);
@@ -32,7 +26,14 @@ const Step3 = () => {
     const question34 = useWizardStore((state) => state.question34);
     const setQuestion34 = useWizardStore((state) => state.setQuestion34);
 
-    const { control, handleSubmit } = useForm<Step3Questions>();
+    const { control, handleSubmit } = useForm<Step3Questions>({
+        defaultValues: {
+            question31: question31.value,
+            question32: question32.value,
+            question33: question33.value,
+            question34: question34.value,
+        },
+    });
 
     const getWizardStepProps = useWizardStep({
         step: 3,
