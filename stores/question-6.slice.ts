@@ -40,8 +40,8 @@ export const createQuestion6Slice: StateCreator<WizardStore, [], [], Question6Sl
                     src: { normal: Q6_FIRM, checked: Q6_FIRM_CHECKED },
                 },
                 {
-                    label: 'Tôi không rõ',
-                    value: 'Tôi không rõ',
+                    label: 'Không rõ',
+                    value: 'Không rõ',
                     src: { normal: Q6_ANY, checked: Q6_ANY_CHECKED },
                 },
             ],

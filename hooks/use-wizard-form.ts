@@ -43,8 +43,8 @@ export const useGetProducts = (body: GetProductsBody, enabled: boolean) => {
                 })
                 .then((response) => response.data)
                 .then(({ data }) => ({
-                    mattress: data.mattress.map(transform),
-                    accessory: data.accessory.map(transform),
+                    mattress: (data.mattress || []).map(transform),
+                    accessory: (data.accessory || []).map(transform),
                 }));
         },
         staleTime: Infinity,
