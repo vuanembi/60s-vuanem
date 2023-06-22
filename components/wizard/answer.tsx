@@ -1,8 +1,9 @@
 import {
-    Button,
+    Box,
     Divider,
     Flex,
     Icon,
+    IconButton,
     Popover,
     PopoverBody,
     PopoverContent,
@@ -11,56 +12,50 @@ import {
     Text,
     VStack,
 } from '@chakra-ui/react';
-import { HiOutlineChevronDown } from 'react-icons/hi';
+import { HiInformationCircle } from 'react-icons/hi';
 
 import { useWizardStore } from '../../stores/wizard.store';
 
 export const WizardAnswer = () => {
-    const question1 = useWizardStore((state) => state.question1);
-    const question2 = useWizardStore((state) => state.question2);
-    const question31 = useWizardStore((state) => state.question31);
-    const question32 = useWizardStore((state) => state.question32);
-    const question33 = useWizardStore((state) => state.question33);
-    const question34 = useWizardStore((state) => state.question34);
-    const question4 = useWizardStore((state) => state.question4);
-    const question5 = useWizardStore((state) => state.question5);
-    const question6 = useWizardStore((state) => state.question6);
-    const question7 = useWizardStore((state) => state.question7);
-
-    const answers = [
-        question1,
-        question2,
-        question31,
-        question32,
-        question33,
-        question34,
-        question4,
-        question5,
-        question6,
-        question7,
-    ].map(({ props: props, value }) => ({ prompt: props.prompt, answer: value }));
+    const answers = useWizardStore((state) => [
+        { shortPrompt: state.question1.shortPrompt, answer: state.question1.value },
+        { shortPrompt: state.question2.shortPrompt, answer: state.question2.value },
+        { shortPrompt: state.question3.question31.shortPrompt, answer: state.question3.question31.value },
+        { shortPrompt: state.question3.question32.shortPrompt, answer: state.question3.question32.value },
+        { shortPrompt: state.question3.question33.shortPrompt, answer: state.question3.question33.value },
+        { shortPrompt: state.question3.question34.shortPrompt, answer: state.question3.question34.value },
+        { shortPrompt: state.question4.shortPrompt, answer: state.question4.value },
+        { shortPrompt: state.question5.shortPrompt, answer: state.question5.value },
+        { shortPrompt: state.question6.shortPrompt, answer: state.question6.value },
+        { shortPrompt: state.question7.shortPrompt, answer: state.question7.value },
+    ]);
 
     return (
-        <Popover placement="bottom-end">
-            <PopoverTrigger>
-                <Button variant="link" rightIcon={<Icon as={HiOutlineChevronDown} />}>
-                    Xem lại lựa chọn
-                </Button>
-            </PopoverTrigger>
-            <Portal>
-                <PopoverContent w="100%" borderColor="indigo.600" boxShadow="base">
-                    <PopoverBody>
-                        <VStack p="16px" spacing="8px" alignItems="stretch" divider={<Divider variant="dashed" />}>
-                            {answers.map(({ prompt, answer }) => (
-                                <Flex key={prompt} flexDirection="column" alignItems="stretch">
-                                    <Text color="slate.500">{prompt}</Text>
-                                    <Text fontWeight="bold">{answer}</Text>
-                                </Flex>
-                            ))}
-                        </VStack>
-                    </PopoverBody>
-                </PopoverContent>
-            </Portal>
-        </Popover>
+        <Box flex="0">
+            <Popover placement="bottom-end">
+                <PopoverTrigger>
+                    <IconButton
+                        boxSize="48px"
+                        variant="outline"
+                        icon={<Icon as={HiInformationCircle} fontSize="20px" />}
+                        aria-label=""
+                    ></IconButton>
+                </PopoverTrigger>
+                <Portal>
+                    <PopoverContent w="100%" borderColor="indigo.600" boxShadow="base">
+                        <PopoverBody>
+                            <VStack p="16px" spacing="8px" alignItems="stretch" divider={<Divider variant="dashed" />}>
+                                {answers.map(({ shortPrompt, answer }) => (
+                                    <Flex key={shortPrompt} flexDirection="column" alignItems="stretch">
+                                        <Text color="slate.500">{shortPrompt}</Text>
+                                        <Text fontWeight="bold">{answer}</Text>
+                                    </Flex>
+                                ))}
+                            </VStack>
+                        </PopoverBody>
+                    </PopoverContent>
+                </Portal>
+            </Popover>
+        </Box>
     );
 };

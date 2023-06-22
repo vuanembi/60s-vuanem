@@ -24,6 +24,7 @@ export const createQuestion5Slice: StateCreator<WizardStore, [], [], Question5Sl
             { label: 'Gối cao', value: 'Gối cao', src: { normal: Q5_HIGH, checked: Q5_HIGH_CHECKED } },
         ],
         prompt: () => `Anh/chị${get().name ? ` ${get().name} ` : ' '}hiện đang sử dụng gối như nào?`,
+        shortPrompt: 'Độ cao gối',
         value: 'Gối cao',
         setValue: (value) => set(({ question5 }) => ({ question5: { ...question5, value: value.question5 } })),
     },

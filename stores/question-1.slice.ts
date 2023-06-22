@@ -20,6 +20,7 @@ export const createQuestion1Slice: StateCreator<WizardStore, [], [], Question1Sl
         ],
         subtitle: 'Lựa chọn một miêu tả đúng với lý do anh/chị đang cần mua',
         prompt: () => `Tại sao anh/chị${get().name ? ` ${get().name} ` : ' '}lại cần nệm mới?`,
+        shortPrompt: 'Nhu cầu',
         value: 'Đổi nệm hoặc nâng cấp nệm',
         setValue: (value) => set(({ question1 }) => ({ question1: { ...question1, value: value.question1 } })),
     },
