@@ -17,12 +17,12 @@ export type Question3Slice = {
         question33: SliderQuestion;
         question34: SliderQuestion;
         prompt: () => string;
+        subtitle: string;
         setValue: (value: Value) => void;
     };
 };
 
 export const createQuestion3Slice: StateCreator<WizardStore, [], [], Question3Slice> = (set, get) => {
-
     return {
         question3: {
             question31: {
@@ -46,6 +46,7 @@ export const createQuestion3Slice: StateCreator<WizardStore, [], [], Question3Sl
                 value: 0,
             },
             prompt: () => `Anh/chị${get().name ? ` ${get().name} ` : ' '}hoặc người sử dụng có gặp vấn đề về sức khoẻ?`,
+            subtitle: 'Lựa chọn một miêu tả đúng với vấn đề đang gặp phải',
             setValue: (value) =>
                 set(({ question3 }) => ({
                     question3: {

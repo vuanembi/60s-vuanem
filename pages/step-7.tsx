@@ -11,7 +11,7 @@ type Step7Questions = {
 };
 
 const Step7 = () => {
-    const { name, prompt, options, value, setValue } = useWizardStore((state) => state.question7);
+    const { name, prompt, subtitle, options, value, setValue } = useWizardStore((state) => state.question7);
 
     const { control, handleSubmit } = useForm<Step7Questions>({
         defaultValues: { question7: value },
@@ -26,7 +26,7 @@ const Step7 = () => {
     });
 
     return (
-        <WizardStep prompt={prompt()} {...getWizardStepProps()}>
+        <WizardStep prompt={prompt()} subtitle={subtitle} {...getWizardStepProps()}>
             <RadioGroupQuestionProps
                 control={control}
                 columns={{ base: 2, md: 4 }}

@@ -14,7 +14,7 @@ type Step3Questions = {
 };
 
 const Step3 = () => {
-    const { prompt, question31, question32, question33, question34, setValue } = useWizardStore(
+    const { prompt, subtitle, question31, question32, question33, question34, setValue } = useWizardStore(
         (state) => state.question3,
     );
 
@@ -30,7 +30,7 @@ const Step3 = () => {
     const getWizardStepProps = useWizardStep({ setValue, handleSubmit, step: 3, previous: '/step-2', next: '/step-4' });
 
     return (
-        <WizardStep prompt={prompt()} {...getWizardStepProps()}>
+        <WizardStep prompt={prompt()} subtitle={subtitle} {...getWizardStepProps()}>
             <VStack alignItems="stretch" spacing="20px">
                 <SliderQuestion control={control} name={question31.name} prompt={question31.prompt} />
                 <SliderQuestion control={control} name={question32.name} prompt={question32.prompt} />

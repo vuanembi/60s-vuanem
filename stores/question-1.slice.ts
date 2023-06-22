@@ -18,6 +18,7 @@ export const createQuestion1Slice: StateCreator<WizardStore, [], [], Question1Sl
             { label: 'Mua tặng cha mẹ & người thân', value: 'Mua tặng cha mẹ & người thân' },
             { label: 'Cho con ngủ riêng', value: 'Cho con ngủ riêng' },
         ],
+        subtitle: 'Lựa chọn một miêu tả đúng với lý do anh/chị đang cần mua',
         prompt: () => `Tại sao anh/chị${get().name ? ` ${get().name} ` : ' '}lại cần nệm mới?`,
         value: 'Đổi nệm hoặc nâng cấp nệm',
         setValue: (value) => set(({ question1 }) => ({ question1: { ...question1, value: value.question1 } })),

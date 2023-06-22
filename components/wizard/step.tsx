@@ -1,10 +1,11 @@
 import { PropsWithChildren, useMemo } from 'react';
-import { Button, Flex, Heading, SlideFade, Progress, Text, chakra, useToken } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, SlideFade, Progress, Text, chakra, useToken } from '@chakra-ui/react';
 
 import { useAnimationOnMount } from '../../hooks/use-animation-on-mount';
 
 type WizardStepProps = PropsWithChildren<{
     prompt: string;
+    subtitle?: string;
     step: number;
     secondaryBtnOnClick: () => void;
     onSubmit: (value: any) => void;
@@ -13,9 +14,7 @@ type WizardStepProps = PropsWithChildren<{
 export const WizardStep = (props: WizardStepProps) => {
     const stepCount = useMemo(() => 7, []);
 
-    const indigo600 = useToken('colors', 'indigo.600');
-
-    const { prompt, step, secondaryBtnOnClick, onSubmit, children } = props;
+    const { prompt, subtitle, step, secondaryBtnOnClick, onSubmit, children } = props;
 
     const { isOpen } = useAnimationOnMount();
 
@@ -41,9 +40,16 @@ export const WizardStep = (props: WizardStepProps) => {
             </Flex>
             <form onSubmit={onSubmit}>
                 <Flex position="relative" minH="600px" flexDirection="column" alignItems="stretch">
-                    <Heading as="h2" mb="24px" textAlign="center" fontSize="20px">
-                        {prompt}
-                    </Heading>
+                    <Box flexDirection="column" minH="110px">
+                        <Heading as="h2" textAlign="center" fontSize="20px">
+                            {prompt}
+                        </Heading>
+                        {subtitle && (
+                            <Heading as="h3" textAlign="center" fontWeight="medium" fontSize="14px">
+                                {subtitle}
+                            </Heading>
+                        )}
+                    </Box>
                     <SlideFade reverse in={isOpen}>
                         {children}
                     </SlideFade>
