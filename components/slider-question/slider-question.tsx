@@ -1,5 +1,15 @@
 import { useController, Control } from 'react-hook-form';
-import { Box, Slider, SliderTrack, SliderFilledTrack, SliderThumb, SliderMark, Text } from '@chakra-ui/react';
+import {
+    Box,
+    Divider,
+    Slider,
+    SliderTrack,
+    SliderFilledTrack,
+    SliderThumb,
+    SliderMark,
+    Text,
+    Flex,
+} from '@chakra-ui/react';
 
 export type SliderQuestionProps = {
     control: Control<any>;
@@ -10,11 +20,9 @@ export type SliderQuestionProps = {
 export const SliderQuestion = ({ control, name, prompt }: SliderQuestionProps) => {
     const { field } = useController({ control, name });
 
-    const labelStyles = { mt: '16px', fontSize: '14px' };
-
     return (
         <Box>
-            <Text mb="14px">{prompt}</Text>
+            <Text mb="8px">{prompt}</Text>
             <Slider
                 defaultValue={field.value}
                 min={0}
@@ -25,23 +33,21 @@ export const SliderQuestion = ({ control, name, prompt }: SliderQuestionProps) =
                     field.onChange(value);
                 }}
             >
-                <SliderMark value={0} {...labelStyles}>
-                    0
+                <SliderMark value={1}>
+                    <Divider orientation="vertical" height="10px" borderColor="indigo.200" borderWidth="2px" />
                 </SliderMark>
-                <SliderMark value={1} {...labelStyles}>
-                    1
-                </SliderMark>
-                <SliderMark value={2} {...labelStyles}>
-                    2
-                </SliderMark>
-                <SliderMark value={3} {...labelStyles}>
-                    3
+                <SliderMark value={2}>
+                    <Divider orientation="vertical" height="10px" borderColor="indigo.200" borderWidth="2px" />
                 </SliderMark>
                 <SliderTrack bgColor="indigo.200">
                     <SliderFilledTrack bgColor="indigo.600" />
                 </SliderTrack>
                 <SliderThumb boxSize={6} />
             </Slider>
+            <Flex mt="8px" justifyContent="space-between">
+                <Text>Không bị</Text>
+                <Text>Thường xuyên</Text>
+            </Flex>
         </Box>
     );
 };
