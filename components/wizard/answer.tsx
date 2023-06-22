@@ -1,8 +1,9 @@
 import {
-    Button,
+    Box,
     Divider,
     Flex,
     Icon,
+    IconButton,
     Popover,
     PopoverBody,
     PopoverContent,
@@ -11,7 +12,7 @@ import {
     Text,
     VStack,
 } from '@chakra-ui/react';
-import { HiOutlineChevronDown } from 'react-icons/hi';
+import { HiInformationCircle } from 'react-icons/hi';
 
 import { useWizardStore } from '../../stores/wizard.store';
 
@@ -30,26 +31,31 @@ export const WizardAnswer = () => {
     ]);
 
     return (
-        <Popover placement="bottom-end">
-            <PopoverTrigger>
-                <Button variant="link" rightIcon={<Icon as={HiOutlineChevronDown} />}>
-                    Xem lại lựa chọn
-                </Button>
-            </PopoverTrigger>
-            <Portal>
-                <PopoverContent w="100%" borderColor="indigo.600" boxShadow="base">
-                    <PopoverBody>
-                        <VStack p="16px" spacing="8px" alignItems="stretch" divider={<Divider variant="dashed" />}>
-                            {answers.map(({ prompt, answer }) => (
-                                <Flex key={prompt} flexDirection="column" alignItems="stretch">
-                                    <Text color="slate.500">{prompt}</Text>
-                                    <Text fontWeight="bold">{answer}</Text>
-                                </Flex>
-                            ))}
-                        </VStack>
-                    </PopoverBody>
-                </PopoverContent>
-            </Portal>
-        </Popover>
+        <Box flex="0">
+            <Popover placement="bottom-end">
+                <PopoverTrigger>
+                    <IconButton
+                        boxSize="48px"
+                        variant="ghost"
+                        icon={<Icon as={HiInformationCircle} fontSize="20px" />}
+                        aria-label=""
+                    ></IconButton>
+                </PopoverTrigger>
+                <Portal>
+                    <PopoverContent w="100%" borderColor="indigo.600" boxShadow="base">
+                        <PopoverBody>
+                            <VStack p="16px" spacing="8px" alignItems="stretch" divider={<Divider variant="dashed" />}>
+                                {answers.map(({ prompt, answer }) => (
+                                    <Flex key={prompt} flexDirection="column" alignItems="stretch">
+                                        <Text color="slate.500">{prompt}</Text>
+                                        <Text fontWeight="bold">{answer}</Text>
+                                    </Flex>
+                                ))}
+                            </VStack>
+                        </PopoverBody>
+                    </PopoverContent>
+                </Portal>
+            </Popover>
+        </Box>
     );
 };

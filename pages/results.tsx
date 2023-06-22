@@ -20,14 +20,14 @@ const Results = () => {
         <Flex flexDirection="column" alignItems="stretch">
             <Box>
                 <Flex justifyContent="space-between">
-                    <Text fontWeight="bold">Kết quả phù hợp</Text>
+                    <Text fontWeight="bold">Chuyên gia giấc ngủ khuyên bạn nên dùng</Text>
                     <WizardAnswer />
                 </Flex>
                 <WizardResult products={data.mattress} />
             </Box>
             {data.accessory.length > 0 && (
                 <Box mt="24px">
-                    <Text fontWeight="bold">Sản phẩm thích hợp đi kèm</Text>
+                    <Text fontWeight="bold">Combo giúp bạn ngủ ngon, chuyên gia khuyên dùng</Text>
                     <WizardResult products={data.accessory} />
                 </Box>
             )}
