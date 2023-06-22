@@ -25,7 +25,7 @@ export const WizardResult = ({ products }: WizardResultProps) => {
                         boxShadow="base"
                     >
                         <SlideFade in={isOpen}>
-                            <Image src={item.imageSrc} alt={item.name} />
+                            <Image borderRadius="6px 6px 0px 0px" src={item.imageSrc} alt={item.name} />
                             <Flex flexDirection="column" p="8px">
                                 <ReactStars
                                     count={5}
