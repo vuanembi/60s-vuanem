@@ -31,7 +31,7 @@ const Step3 = () => {
 
     return (
         <WizardStep prompt={prompt()} subtitle={subtitle} {...getWizardStepProps()}>
-            <VStack alignItems="stretch" spacing="20px">
+            <VStack alignItems="stretch" spacing="16px">
                 <SliderQuestion control={control} name={question31.name} prompt={question31.prompt} />
                 <SliderQuestion control={control} name={question32.name} prompt={question32.prompt} />
                 <SliderQuestion control={control} name={question33.name} prompt={question33.prompt} />
