@@ -1,28 +1,25 @@
 import { StateCreator } from 'zustand';
 
 import { RadioCardTextProps } from '../components/radio-question/radio-card-text';
-import { RadioQuestion, SetRadioQuestion } from './question.slice.type';
+import { RadioQuestion } from './question.slice.type';
 import { WizardStore } from './wizard.store';
 
 export type Question1Slice = {
-    question1: RadioQuestion<RadioCardTextProps>;
-    setQuestion1: SetRadioQuestion;
+    question1: RadioQuestion<'question1', RadioCardTextProps>;
 };
 
-export const createQuestion1Slice: StateCreator<WizardStore, [], [], Question1Slice> = (set) => ({
+export const createQuestion1Slice: StateCreator<WizardStore, [], [], Question1Slice> = (set, get) => ({
     question1: {
-        props: {
-            name: 'question1',
-            prompt: 'Nhu cầu của bạn?',
-            options: [
-                { label: 'Đổi nệm hoặc nâng cấp nệm', value: 'Đổi nệm hoặc nâng cấp nệm' },
-                { label: 'Nệm cũ ngủ không ngon giấc', value: 'Nệm cũ ngủ không ngon giấc' },
-                { label: 'Mua nệm mới, giường mới', value: 'Mua nệm mới, giường mới' },
-                { label: 'Mua tặng cha mẹ & người thân', value: 'Mua tặng cha mẹ & người thân' },
-                { label: 'Cho con ngủ riêng', value: 'Cho con ngủ riêng' },
-            ],
-        },
+        name: 'question1',
+        options: [
+            { label: 'Đổi nệm hoặc nâng cấp nệm', value: 'Đổi nệm hoặc nâng cấp nệm' },
+            { label: 'Nệm cũ ngủ không ngon giấc', value: 'Nệm cũ ngủ không ngon giấc' },
+            { label: 'Mua nệm mới, giường mới', value: 'Mua nệm mới, giường mới' },
+            { label: 'Mua tặng cha mẹ & người thân', value: 'Mua tặng cha mẹ & người thân' },
+            { label: 'Cho con ngủ riêng', value: 'Cho con ngủ riêng' },
+        ],
+        prompt: () => `Tại sao anh/chị${get().name ? ` ${get().name} ` : ' '}lại cần nệm mới?`,
         value: 'Đổi nệm hoặc nâng cấp nệm',
+        setValue: (value) => set(({ question1 }) => ({ question1: { ...question1, value: value.question1 } })),
     },
-    setQuestion1: (value) => set((state) => ({ question1: { props: state.question1.props, value } })),
 });

@@ -11,26 +11,17 @@ type Step5Questions = {
 };
 
 const Step5 = () => {
-    const question = useWizardStore((state) => state.question5);
-    const setQuestion = useWizardStore((state) => state.setQuestion5);
+    const { name, prompt, options, value, setValue } = useWizardStore((state) => state.question5);
 
     const { control, handleSubmit } = useForm<Step5Questions>({
-        defaultValues: { question5: question.value },
+        defaultValues: { question5: value },
     });
 
-    const getWizardStepProps = useWizardStep({
-        step: 5,
-        previous: '/step-4',
-        next: '/step-6',
-        callback: (value) => {
-            setQuestion(value.question5);
-        },
-        handleSubmit,
-    });
+    const getWizardStepProps = useWizardStep({ setValue, handleSubmit, step: 5, previous: '/step-4', next: '/step-6' });
 
     return (
-        <WizardStep prompt={question.props.prompt} {...getWizardStepProps()}>
-            <RadioGroupQuestionProps control={control} columns={1} Item={RadioCardText} {...question.props} />
+        <WizardStep prompt={prompt()} {...getWizardStepProps()}>
+            <RadioGroupQuestionProps control={control} columns={1} Item={RadioCardText} name={name} options={options} />
         </WizardStep>
     );
 };

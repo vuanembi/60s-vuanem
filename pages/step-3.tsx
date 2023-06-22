@@ -27,13 +27,7 @@ const Step3 = () => {
         },
     });
 
-    const getWizardStepProps = useWizardStep({
-        step: 3,
-        previous: '/step-2',
-        next: '/step-4',
-        callback: setValue,
-        handleSubmit,
-    });
+    const getWizardStepProps = useWizardStep({ setValue, handleSubmit, step: 3, previous: '/step-2', next: '/step-4' });
 
     return (
         <WizardStep prompt={prompt()} {...getWizardStepProps()}>

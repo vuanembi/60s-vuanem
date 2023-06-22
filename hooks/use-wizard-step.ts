@@ -6,11 +6,11 @@ type UseWizardStepsProps<T extends {}> = {
     previous: string;
     next: string;
     handleSubmit: UseFormHandleSubmit<T, undefined>;
-    callback: (value: T) => void;
+    setValue: (value: T) => void;
 };
 
 export const useWizardStep = <T extends {}>(props: UseWizardStepsProps<T>) => {
-    const { step, previous, next, handleSubmit, callback } = props;
+    const { step, previous, next, handleSubmit, setValue } = props;
 
     const router = useRouter();
 
@@ -18,7 +18,7 @@ export const useWizardStep = <T extends {}>(props: UseWizardStepsProps<T>) => {
         step,
         secondaryBtnOnClick: () => router.push(previous),
         onSubmit: handleSubmit((value) => {
-            callback(value);
+            setValue(value);
             router.push(next);
         }),
     });
