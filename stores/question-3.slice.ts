@@ -45,7 +45,7 @@ export const createQuestion3Slice: StateCreator<WizardStore, [], [], Question3Sl
                 prompt: 'Đau mỏi vai gáy?',
                 value: 0,
             },
-            prompt: () => `Anh/chị${get().name ? ` ${get().name} ` : ''}hoặc người sử dụng có gặp vấn đề về sức khoẻ?`,
+            prompt: () => `Anh/chị${get().name ? ` ${get().name} ` : ' '}hoặc người sử dụng có gặp vấn đề về sức khoẻ?`,
             setValue: (value) =>
                 set(({ question3 }) => ({
                     question3: {

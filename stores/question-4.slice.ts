@@ -35,7 +35,7 @@ export const createQuestion4Slice: StateCreator<WizardStore, [], [], Question4Sl
                 src: { normal: Q4_TRIPLE, checked: Q4_TRIPLE_CHECKED },
             },
         ],
-        prompt: () => `Anh/chị${get().name ? ` ${get().name} ` : ' '}hoặc người sử dụng có gặp vấn đề về sức khoẻ?`,
+        prompt: () => `Có bao nhiêu người cùng nằm trên nệm?`,
         value: '1 người',
         setValue: (value) => set(({ question4 }) => ({ question4: { ...question4, value: value.question4 } })),
     },
