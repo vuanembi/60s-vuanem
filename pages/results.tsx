@@ -6,13 +6,13 @@ import { WizardResult } from '../components/wizard/result';
 import { useWizardStore } from '../stores/wizard.store';
 
 const Results = () => {
-    const wizardQuery = useWizardStore((state) => state.getValues)();
+    const wizardQuery = useWizardStore((state) => ({
+        question6: state.question6.value,
+        question7: state.question7.value,
+    }));
 
     const { data = { mattress: [], accessory: [] } } = useGetProducts(
-        {
-            cau_6: wizardQuery.question6.value,
-            cau_7: wizardQuery.question7.value,
-        },
+        { cau_6: wizardQuery.question6, cau_7: wizardQuery.question7 },
         true,
     );
 

@@ -16,29 +16,18 @@ import { HiOutlineChevronDown } from 'react-icons/hi';
 import { useWizardStore } from '../../stores/wizard.store';
 
 export const WizardAnswer = () => {
-    const question1 = useWizardStore((state) => state.question1);
-    const question2 = useWizardStore((state) => state.question2);
-    const question31 = useWizardStore((state) => state.question31);
-    const question32 = useWizardStore((state) => state.question32);
-    const question33 = useWizardStore((state) => state.question33);
-    const question34 = useWizardStore((state) => state.question34);
-    const question4 = useWizardStore((state) => state.question4);
-    const question5 = useWizardStore((state) => state.question5);
-    const question6 = useWizardStore((state) => state.question6);
-    const question7 = useWizardStore((state) => state.question7);
-
-    const answers = [
-        question1,
-        question2,
-        question31,
-        question32,
-        question33,
-        question34,
-        question4,
-        question5,
-        question6,
-        question7,
-    ].map(({ props: props, value }) => ({ prompt: props.prompt, answer: value }));
+    const answers = useWizardStore((state) => [
+        { prompt: state.question1.prompt(), answer: state.question1.value },
+        { prompt: state.question2.prompt(), answer: state.question2.value },
+        { prompt: state.question3.question31.prompt, answer: state.question3.question31.value },
+        { prompt: state.question3.question32.prompt, answer: state.question3.question32.value },
+        { prompt: state.question3.question33.prompt, answer: state.question3.question33.value },
+        { prompt: state.question3.question34.prompt, answer: state.question3.question34.value },
+        { prompt: state.question4.prompt(), answer: state.question4.value },
+        { prompt: state.question5.prompt(), answer: state.question5.value },
+        { prompt: state.question6.prompt(), answer: state.question6.value },
+        { prompt: state.question7.prompt(), answer: state.question7.value },
+    ]);
 
     return (
         <Popover placement="bottom-end">
