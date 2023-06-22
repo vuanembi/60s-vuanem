@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import NextLink from 'next/link';
-import { Box, Button, Flex, Heading } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, chakra } from '@chakra-ui/react';
 
 import HERO_IMAGE from '../public/hero.png';
 
@@ -19,11 +19,9 @@ const Home = () => {
                 <Image src={HERO_IMAGE} alt="Hero" fill />
             </Box>
             <Flex mt="32px" flexDirection="column" alignItems="center">
-                <Heading as="h1" fontSize="32px" fontWeight="medium" lineHeight={1.5}>
-                    Chọn nệm trong
-                </Heading>
-                <Heading as="h1" fontSize="36px" fontWeight="bold">
-                    60s
+                <Heading as="h1" textAlign="center" fontSize="32px" fontWeight="medium" lineHeight={1.5}>
+                    Tìm chiếc nệm tốt nhất với nhu cầu của bạn chỉ trong{' '}
+                    <chakra.span fontWeight="bold">60s</chakra.span>
                 </Heading>
             </Flex>
             <Button as={NextLink} href="/step-1" position="absolute" bottom="0px">
