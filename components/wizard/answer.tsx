@@ -36,7 +36,7 @@ export const WizardAnswer = () => {
                 <PopoverTrigger>
                     <IconButton
                         boxSize="48px"
-                        variant="ghost"
+                        variant="outline"
                         icon={<Icon as={HiInformationCircle} fontSize="20px" />}
                         aria-label=""
                     ></IconButton>
