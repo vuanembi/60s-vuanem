@@ -38,7 +38,7 @@ export const WizardAnswer = () => {
         question5,
         question6,
         question7,
-    ].map(({ props, value }) => ({ prompt: props.prompt, answer: value }));
+    ].map(({ props: props, value }) => ({ prompt: props.prompt, answer: value }));
 
     return (
         <Popover placement="bottom-end">

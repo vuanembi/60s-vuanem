@@ -7,14 +7,14 @@ export type SliderQuestionProps = {
     prompt: string;
 };
 
-export const SliderQuestion = ({ control, name, prompt: question }: SliderQuestionProps) => {
+export const SliderQuestion = ({ control, name, prompt }: SliderQuestionProps) => {
     const { field } = useController({ control, name });
 
     const labelStyles = { mt: '16px', fontSize: '14px' };
 
     return (
         <Box>
-            <Text mb="14px">{question}</Text>
+            <Text mb="14px">{prompt}</Text>
             <Slider
                 defaultValue={field.value}
                 min={0}
