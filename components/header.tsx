@@ -6,7 +6,7 @@ import LOGO from '../public/logo-header.svg';
 
 export const Header = () => {
     return (
-        <Flex mb="32px" flexDirection="column" alignItems="center">
+        <Flex as="nav" mb="32px" flexDirection="column" alignItems="center">
             <LinkBox position="relative" w="100px" h="32px">
                 <LinkOverlay as={NextLink} href="/">
                     <NextImage src={LOGO} alt="Logo" fill />
