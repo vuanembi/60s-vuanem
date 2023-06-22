@@ -10,12 +10,14 @@ export type Product = {
     name: string;
     slug: string;
     imageSrc: string;
+    rating: number;
 };
 
 type ProductResponse = {
     name: string;
     slug: string;
     images: string;
+    avg_rate: number;
 };
 
 export type GetProductResponse = {
@@ -30,6 +32,7 @@ export const useGetProducts = (body: GetProductsBody, enabled: boolean) => {
         name: item.name,
         slug: `https://vuanem.com/${item.slug}.html`,
         imageSrc: item.images.replace('public', 'https://vuanem.com/storage'),
+        rating: item.avg_rate || 4,
     });
 
     return useQuery<{ mattress: Product[]; accessory: Product[] }>({

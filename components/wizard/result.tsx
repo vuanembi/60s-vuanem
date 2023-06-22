@@ -1,4 +1,5 @@
-import { Flex, Image, LinkBox, LinkOverlay, SimpleGrid, SlideFade, Text } from '@chakra-ui/react';
+import { Flex, Image, LinkBox, LinkOverlay, SimpleGrid, SlideFade, Text, useToken } from '@chakra-ui/react';
+import ReactStars from 'react-stars';
 
 import { Product } from '../../hooks/use-wizard-form';
 import { useAnimationOnMount } from '../../hooks/use-animation-on-mount';
@@ -8,6 +9,7 @@ type WizardResultProps = {
 };
 
 export const WizardResult = ({ products }: WizardResultProps) => {
+    const [yellow300, slate500] = useToken('colors', ['yellow.300', 'slate.500']);
     const { isOpen } = useAnimationOnMount();
 
     return (
@@ -20,14 +22,22 @@ export const WizardResult = ({ products }: WizardResultProps) => {
                         flexDirection="column"
                         alignItems="stretch"
                         borderRadius="6px"
-                        borderWidth="1px"
-                        borderColor="indigo.600"
+                        boxShadow="base"
                     >
                         <SlideFade in={isOpen}>
                             <Image src={item.imageSrc} alt={item.name} />
-                            <LinkOverlay isExternal href={item.slug}>
-                                <Text p="6px">{item.name}</Text>
-                            </LinkOverlay>
+                            <Flex flexDirection="column" p="8px">
+                                <ReactStars
+                                    count={5}
+                                    size={16}
+                                    color1={slate500}
+                                    color2={yellow300}
+                                    value={item.rating}
+                                />
+                                <LinkOverlay isExternal href={item.slug}>
+                                    <Text>{item.name}</Text>
+                                </LinkOverlay>
+                            </Flex>
                         </SlideFade>
                     </LinkBox>
                 );
