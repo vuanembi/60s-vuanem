@@ -43,6 +43,7 @@ export const createQuestion2Slice: StateCreator<WizardStore, [], [], Question2Sl
             },
         ],
         prompt: () => `Tư thế ngủ quen thuộc của anh/chị${get().name ? ` ${get().name}` : ''}?`,
+        shortPrompt: 'Tư thế nằm',
         value: 'Nằm nghiêng',
         setValue: (value) => set(({ question2 }) => ({ question2: { ...question2, value: value.question2 } })),
     },

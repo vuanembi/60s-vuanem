@@ -36,6 +36,7 @@ export const createQuestion4Slice: StateCreator<WizardStore, [], [], Question4Sl
             },
         ],
         prompt: () => `Có bao nhiêu người cùng nằm trên nệm?`,
+        shortPrompt: 'Kích cỡ nệm',
         subtitle: 'Lựa chọn đáp án để có 1 chiếc nệm nằm có diện tích phù hợp',
         value: '1 người',
         setValue: (value) => set(({ question4 }) => ({ question4: { ...question4, value: value.question4 } })),

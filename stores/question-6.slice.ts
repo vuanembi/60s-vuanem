@@ -44,6 +44,7 @@ export const createQuestion6Slice: StateCreator<WizardStore, [], [], Question6Sl
         ],
         prompt: () => `Anh/chị${get().name ? ` ${get().name} ` : ' '}muốn nằm nệm có độ cứng như thế nào?`,
         subtitle: 'Độ cứng của mỗi loại nệm sẽ ảnh hưởng đến thói quen giấc ngủ, hãy chọn chính xác nhé',
+        shortPrompt: 'Độ cứng mềm nệm',
         value: 'Mềm mại',
         setValue: (value) => set(({ question6 }) => ({ question6: { ...question6, value: value.question6 } })),
     },

@@ -44,6 +44,7 @@ export const createQuestion7Slice: StateCreator<WizardStore, [], [], Question7Sl
         ],
         value: 'Lò xo',
         prompt: () => `Anh/chị${get().name ? ` ${get().name} ` : ' '}đặc biệt yêu thích chất liệu nệm nào?`,
+        shortPrompt: 'Loại/Chất liệu nệm',
         subtitle: 'Lựa chọn đáp án để giúp số người có thể nằm trên nệm một cách thoải mái nhất',
         setValue: (value) => set(({ question7 }) => ({ question7: { ...question7, value: value.question7 } })),
     },

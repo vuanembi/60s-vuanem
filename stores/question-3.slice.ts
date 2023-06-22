@@ -28,21 +28,25 @@ export const createQuestion3Slice: StateCreator<WizardStore, [], [], Question3Sl
             question31: {
                 name: 'question31',
                 prompt: 'Ngáy khi ngủ?',
+                shortPrompt: 'Ngáy khi ngủ',
                 value: 0,
             },
             question32: {
                 name: 'question32',
                 prompt: 'Trào ngược dạ dày?',
+                shortPrompt: 'Trào ngược dạ dày',
                 value: 0,
             },
             question33: {
                 name: 'question33',
                 prompt: 'Đau mỏi lưng?',
+                shortPrompt: 'Đau mỏi lưng',
                 value: 0,
             },
             question34: {
                 name: 'question34',
                 prompt: 'Đau mỏi vai gáy?',
+                shortPrompt: 'Đau mỏi vai gáy',
                 value: 0,
             },
             prompt: () => `Anh/chị${get().name ? ` ${get().name} ` : ' '}hoặc người sử dụng có gặp vấn đề về sức khoẻ?`,
