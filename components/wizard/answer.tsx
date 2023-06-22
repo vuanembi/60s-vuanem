@@ -42,7 +42,7 @@ export const WizardAnswer = () => {
                     ></IconButton>
                 </PopoverTrigger>
                 <Portal>
-                    <PopoverContent w="100%" borderColor="indigo.600" boxShadow="base">
+                    <PopoverContent w="full" borderColor="indigo.600" boxShadow="base">
                         <PopoverBody>
                             <VStack p="16px" spacing="8px" alignItems="stretch" divider={<Divider variant="dashed" />}>
                                 {answers.map(({ shortPrompt, answer }) => (
