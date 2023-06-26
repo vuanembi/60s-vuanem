@@ -6,16 +6,13 @@ import { WizardStep } from '../components/wizard/step';
 import { useWizardStep } from '../hooks/use-wizard-step';
 import { useWizardStore } from '../stores/wizard.store';
 
-type Step4Questions = {
-    question4: string;
-};
-
 const Step4 = () => {
-    const { name, prompt, subtitle, options, value, setValue } = useWizardStore((state) => state.question4);
+    const { name, prompt, subtitle, options, defaultValues, setValue } = useWizardStore(({ question4 }) => ({
+        ...question4,
+        defaultValues: { [question4.name]: question4.value },
+    }));
 
-    const { control, handleSubmit } = useForm<Step4Questions>({
-        defaultValues: { question4: value },
-    });
+    const { control, handleSubmit } = useForm<typeof defaultValues>({ defaultValues });
 
     const getWizardStepProps = useWizardStep({ setValue, handleSubmit, step: 4, previous: '/step-3', next: '/step-5' });
 

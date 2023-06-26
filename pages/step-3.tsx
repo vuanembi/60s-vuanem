@@ -6,36 +6,29 @@ import { WizardStep } from '../components/wizard/step';
 import { useWizardStep } from '../hooks/use-wizard-step';
 import { useWizardStore } from '../stores/wizard.store';
 
-type Step3Questions = {
-    question31: number;
-    question32: number;
-    question33: number;
-    question34: number;
-};
-
 const Step3 = () => {
-    const { prompt, subtitle, question31, question32, question33, question34, setValue } = useWizardStore(
-        (state) => state.question3,
-    );
+    const { prompt, subtitle, question31, question32, question33, question34, defaultValues, setValue } =
+        useWizardStore(({ question3 }) => ({
+            ...question3,
+            defaultValues: {
+                question31: question3.question31.value,
+                question32: question3.question32.value,
+                question33: question3.question33.value,
+                question34: question3.question34.value,
+            },
+        }));
 
-    const { control, handleSubmit } = useForm<Step3Questions>({
-        defaultValues: {
-            question31: question31.value,
-            question32: question32.value,
-            question33: question33.value,
-            question34: question34.value,
-        },
-    });
+    const { control, handleSubmit } = useForm<typeof defaultValues>({ defaultValues });
 
     const getWizardStepProps = useWizardStep({ setValue, handleSubmit, step: 3, previous: '/step-2', next: '/step-4' });
 
     return (
         <WizardStep prompt={prompt()} subtitle={subtitle} {...getWizardStepProps()}>
             <VStack alignItems="stretch" spacing="16px">
-                <SliderQuestion control={control} name={question31.name} prompt={question31.prompt} />
-                <SliderQuestion control={control} name={question32.name} prompt={question32.prompt} />
-                <SliderQuestion control={control} name={question33.name} prompt={question33.prompt} />
-                <SliderQuestion control={control} name={question34.name} prompt={question34.prompt} />
+                <SliderQuestion control={control} {...question31} />
+                <SliderQuestion control={control} {...question32} />
+                <SliderQuestion control={control} {...question33} />
+                <SliderQuestion control={control} {...question34} />
             </VStack>
         </WizardStep>
     );
