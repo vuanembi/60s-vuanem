@@ -7,9 +7,9 @@ import { useWizardStep } from '../hooks/use-wizard-step';
 import { useWizardStore } from '../stores/wizard.store';
 
 const Step7 = () => {
-    const { name, prompt, subtitle, options, defaultValues, setValue } = useWizardStore(({ question6 }) => ({
-        ...question6,
-        defaultValues: { [question6.name]: question6.value },
+    const { name, prompt, subtitle, options, defaultValues, setValue } = useWizardStore(({ question7 }) => ({
+        ...question7,
+        defaultValues: { [question7.name]: question7.value },
     }));
 
     const { control, handleSubmit } = useForm<typeof defaultValues>({ defaultValues });
